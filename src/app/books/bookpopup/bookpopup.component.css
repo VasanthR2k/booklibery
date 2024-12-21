@@ -1,0 +1,24 @@
+.books-form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  mat-card {
+    margin: 20px 0;
+  }
+  
+  mat-dialog-actions {
+    margin-top: 20px;
+  }
+  
+  img {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+  

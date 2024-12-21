@@ -1,0 +1,62 @@
+<form [formGroup]="books">
+    <mat-card style="margin-bottom: - 15px;" class="stock">
+        <mat-card-content>
+            <mat-card-title class="mat-headline-5">Particular Books
+            </mat-card-title>
+
+            <div>
+                <mat-form-field appearance="outline" class="salary-full-width">
+                    <mat-label>Title</mat-label>
+                    <input matInput placeholder="Title" formControlName="title">
+
+                </mat-form-field><br>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" class="salary-full-width">
+                    <mat-label>Description</mat-label>
+                    <input matInput placeholder="Description" formControlName="description">
+                </mat-form-field><br>
+            </div>
+
+            <div>
+                <mat-form-field appearance="outline" class="salary-full-width">
+                    <mat-label>Author</mat-label>
+                    <input matInput placeholder="Author" formControlName="author">
+                </mat-form-field>
+            </div>
+
+
+            <div>
+                <mat-form-field appearance="outline" class="salary-full-width">
+                    <mat-label>Release_year</mat-label>
+                    <input type="number" matInput placeholder="Release_year" formControlName="release_year">
+                </mat-form-field>
+            </div>
+            
+            <div>
+                <p>pdf</p>
+                <input type="file" placeholder="choose pdf" (change)="uploadpdf($event)"
+                    [type]="!pdf?.value ? 'file' : 'hidden'">
+                <img src="http://localhost:3000/public/{{pdf?.value}}" (click)="imagedeleteresult('pdf')" width="70"
+                    *ngIf="pdf?.value" height="40" />
+            </div>
+            <br>
+
+
+            <div>
+                <p>image</p>
+                <input type="file" placeholder="choose pdf" (change)="image($event)"
+                    [type]="!imagevalue?.value ? 'file' : 'hidden'">
+
+                <img src="http://localhost:3000/public/{{imagevalue?.value}}" (click)="imagedeleteresult('image')"
+                    width="70" *ngIf="imagevalue?.value" height="40" />
+            </div>
+
+            <mat-dialog-actions align="end">
+                <button mat-raised-button color="accent" class="mat-btn-padding" (click)="CancelDialog()">Cancel</button>
+                <button mat-raised-button color="primary" class="mat-btn-padding" [disabled]="books.invalid" (click)="saveBook()">Save</button>
+            </mat-dialog-actions>
+        </mat-card-content>
+    </mat-card>
+</form>

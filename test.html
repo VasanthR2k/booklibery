@@ -1,0 +1,5410 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tracking</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<noscript>
+		<meta http-equiv="refresh"
+			content="0;url=error.asp?error_msg=Your browser does not support JavaScript and it is required to use the  Application">
+		</noscript>
+
+
+	<!-- CSS libraries -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap_4_1_3.min.css">
+	<link rel="stylesheet" type="text/css" href="css/ion.rangeSlider.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-toggle.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-tagsinput.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="stylesheet" type="text/css" href="css/mcp_style.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.datetimepicker.min.css">
+	<link rel="stylesheet" href="css/jquery-ui-1.12.1.custom/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/cha_style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.popover.css">
+
+	<!-- JS libraries -->
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/popper.min.js"></script>
+	<script type="text/javascript" src="js/ion.rangeSlider.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
+	<!-- Handle jQuery plugin naming conflict between jQuery UI and Bootstrap -->
+	<script type="text/javascript">
+		$.widget.bridge('uitooltip', $.ui.tooltip);
+	</script>
+
+	<script type="text/javascript" src="js/bootstrap_4_1_3.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-tagsinput.min.js"></script>
+	<script type="text/javascript" src="js/moment.2.10.6.min.js"></script>
+	<script language=JavaScript src="js/stdlib.js"></script>
+	<script type="text/javascript" src="js/tooltip.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.popover.js"></script>
+	<script language=JavaScript src="js/common.js"></script>
+
+	<!--https://xdsoft.net/jqplugins/datetimepicker/ -->
+	<script type="text/javascript" src="js/jquery.datetimepicker.full.min.js"></script>
+
+	<script type="text/javascript">
+		<!--
+		disabledBackButton(location.pathname.substring(1));
+    //
+		-->
+	</script>
+
+</head>
+<div id="overlay">
+	<div id="download-link-container">
+		<div id="download-ajax-loader-container">
+			<img src="images/ajax-loader.gif">
+        </div>
+		</div>
+	</div>
+
+	<body>
+		<style>
+			#adsense {
+				width: 100%;
+				margin: 10px 0;
+			}
+
+			.adsense_boost {
+				margin-bottom: 89px !important;
+			}
+
+			#adsense .adsense_inner {
+				max-width: 1000px;
+				padding: 0 12px;
+				margin: 0 auto;
+			}
+
+			#adsense .adsense_inner a {
+				text-align: center;
+				width: 100%;
+				display: block;
+			}
+
+			#adsense .adsense_inner a img {}
+		</style>
+
+
+
+		<header class="transition header ">
+			<div id="header_inner">
+
+				<a id="logo" href="index.asp" title="Home">
+
+					<img src="images/home/cha_prod_logo.png" alt="" />
+
+            </a>
+
+					<section id="header_right">
+
+						<ul id="header_logged_in" style="font-size: 15px; font-weight: 600;">
+
+							<li><a href="blog/index.asp" target="_blank"><span>Blog</span></a></li>
+
+
+
+							<li><a href="help.asp" target="_blank"><span>Help</span></a></li>
+
+						</ul>
+
+					</section>
+			</div>
+		</header>
+		<article>
+			<div id="main_container">
+
+
+				<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+				<link type="text/css" rel="StyleSheet" href="css/sortabletable.css" />
+				<link rel="stylesheet" href="css/font-awesome.min.css">
+				<link rel="stylesheet" type="text/css" href="css/common.css">
+				<link rel="stylesheet" href="css/jquery-ui-1.12.1.custom/jquery-ui.css">
+				<!--[if lte ie 9]>
+    	<link rel="stylesheet" type="text/css" href="css/ie-only.css" />
+	<![endif]-->
+				<link rel="stylesheet" type="text/css" href="css/mcp_style.css">
+				<link rel="stylesheet" type="text/css" href="css/cha_style.css">
+				<link rel="stylesheet" type="text/css" href="css/tracking.css">
+				<script language=JavaScript src="js/stdlib.js"></script>
+				<script language=JavaScript src="js/form_validate.js"></script>
+				<script language=JavaScript src="js/json2.js"></script>
+				<script type="text/javascript" src="js/jquery-v1.11.1-min.js"></script>
+				<!--<script type="text/javascript" src="js/jquery-v3.2.1-min.js"></script>-->
+				<script type="text/javascript" src="js/bootstrap.min.js"></script>
+				<script language=JavaScript src="js/common.js"></script>
+
+
+
+				<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+				<script language="JavaScript">
+					var trackingObj = {
+    awbInfoObj: {},
+    captchaInit: function() {
+        if (!jQuery("#carrier_dropdown_1").val()) {
+            if (jQuery("#is_cwndc").val() == 0) {
+                jQuery("#message").text(getCommonMessage("Carrier is not supported"));
+            }
+            
+            return false;
+        }
+
+        if (!jQuery("#prefix_1").val() || !jQuery("#awb_1").val()) {
+            jQuery("#message").text(getCommonMessage("Missing mandatory fields. Please provide Carrier, Prefix and Air Waybill Serial."));
+            return false;   
+        }
+
+        jQuery("#tracking_details").empty();
+        this.awbInfoObj = generateAwbInfoObj();
+        if (this.awbInfoObj) {
+            jQuery("#captcha_container").show();
+        } else {            
+            let isPortlet = jQuery("#is_portlet").val();
+            isPortlet = (isPortlet) ? isPortlet.toUpperCase() : isPortlet;
+            
+            if (isPortlet == "YES") {
+                displayInvalidRequest();
+            }
+        }
+    },
+    captchaReset: function() {
+        grecaptcha.reset();
+        $("#captcha_container").hide();
+    }
+};
+
+function captchaCallback() {
+    uuid.checkUuidAndTrack(trackingObj.awbInfoObj, grecaptcha.getResponse());
+}
+
+
+jQuery(document).ready(function() {
+    jQuery("#track-submit").on('click', function() {
+        trackingObj.captchaReset();
+        trackingObj.captchaInit();
+    });
+});
+				</script>
+
+				<script language="JavaScript">
+					Math.trunc = Math.trunc || function(x) {
+  if (isNaN(x)) {
+    return NaN;
+  }
+  if (x > 0) {
+    return Math.floor(x);
+  }
+  return Math.ceil(x);
+};
+
+function isIE() {
+	var ua = window.navigator.userAgent;
+	var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+    	return true;
+    }
+
+    return false;
+}
+
+function getRadioButtonValue(radio_button){
+	//var radio_button = document.getElementsByName(name);
+	var value = "";
+	if(radio_button){
+		if(radio_button.length){
+			for(var i = 0; i < radio_button.length; i++){
+				if(radio_button[i].checked){
+					value = radio_button[i].value;
+				}
+			}
+		}else{
+			value = radio_button.value;
+		}
+	}
+	return value;
+}
+
+//---------------------------------------------------------------------
+// Function:   setSelectedText
+// Parameter:  id, text
+// Purpose:	   to set the text from selected dropdownlist to an id
+//---------------------------------------------------------------------
+function setSelectedText(id,txt){
+	document.getElementById(id).value = txt;
+}
+
+function selectByText(id,txt){
+
+	var dropdown = document.getElementById(id);
+
+	for(var i = 0; i < dropdown.children.length; i++) {
+		if(txt == dropdown.children[i].innerHTML){
+			document.getElementById(id).selectedIndex = i;
+			break;
+		}
+	}
+}
+
+//---------------------------------------------------------------------
+// Function:   clear dropdownlist
+// Parameter:  
+// Return:     removes all <option> in dropdownlist
+//---------------------------------------------------------------------
+function removeAllOptions(list){
+	var len = list.options.length-1;
+	for(var i = len; i >= 0; i--){
+		list.remove(i);
+	}
+}
+
+//---------------------------------------------------------------------
+// Function:   add to dropdownlist
+// Parameter:  
+// Return:     add <option> to dropdownlist
+//---------------------------------------------------------------------
+function addOption(list,text,value ){
+	var option = document.createElement("option");
+	option.text = text;
+	option.value = value;
+	list.options.add(option);
+}
+
+//---------------------------------------------------------------------
+// Function:   goToPage
+// Parameter:  full url ... www.champ.earo/login.asp
+// Return:     removes begining whitespaces
+//---------------------------------------------------------------------
+function goToPage(page){
+	window.location =  page;
+}
+
+String.prototype.capitalize = function() {
+	return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase(); 
+}
+
+String.prototype.capitalizeWorld = function(){ 
+	return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } ); 
+};
+//---------------------------------------------------------------------
+// Function:   LTrim
+// Parameter:  field to be trimmed
+// Return:     removes begining whitespaces
+//---------------------------------------------------------------------
+function LTrim(value){
+	var re = /\s*((\S+\s*)*)/;
+	return value.replace(re, "$1");
+}
+
+//---------------------------------------------------------------------
+// Function:   RTrim
+// Parameter:  field to be trimmed
+// Return:     removes ending whitespaces
+//---------------------------------------------------------------------
+function RTrim(value){
+	var re = /((\s*\S+)*)\s*/;
+	return value.replace(re, "$1");
+}
+
+//---------------------------------------------------------------------
+// Function:   Trim
+// Parameter:  field to be trimmed
+// Return:     removes leading and ending whitespaces
+//---------------------------------------------------------------------
+function Trim(value){
+	return LTrim(RTrim(value));
+}
+
+//---------------------------------------------------------------------
+// Function:   isEmpty
+// Parameter:  field value
+// Return:     true or false
+//---------------------------------------------------------------------
+function isEmpty(value){
+	return (Trim(value).length == 0) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// Function:   isArrayEmpty
+// Parameter:  Array
+// Return:     true if array has no elements otherwise false
+//---------------------------------------------------------------------
+function isEmptyArray(arr){
+	var empty = true;
+	if(arr){
+		if(arr.length > 0){
+			for (var i = 0; i < arr.length ; i++){
+				if(document.getElementById(arr[i]) && document.getElementById(arr[i]).value != ""){
+					empty = false;
+					break;
+				}
+			}
+		}
+	}
+	return empty;
+}
+
+function isInArray(arr,value){
+	var status = false;
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] == value){
+			status = true;
+			break;
+		}
+	}
+	return status;
+}
+
+function getLength(value){
+	return value.length;
+}
+
+
+//---------------------------------------------------------------------
+// Function:   isDigit
+// Parameter:  field value
+// Return:     true or false
+//---------------------------------------------------------------------
+function isDigit (str){
+      return str.match(/^\d+$/) ? true : false;
+}
+
+function isAlpha(str){
+	
+	var status = false;
+
+	var reg = /^[a-zA-Z]+$/;
+	
+	if(str != ""){
+		status = (reg.test(str)) ? true : false;
+	}
+
+	return status;
+}
+
+function isAlphaNumeric(str){
+	
+	var status = false;
+
+	var reg = /^[a-zA-Z0-9\s]+$/;
+	
+	if(str != ""){
+		status = (reg.test(str)) ? true : false;
+	}
+
+	return status;
+}
+
+//---------------------------------------------------------------------
+// Function:   isInt
+// Parameter:  field value
+// Return:     true or false
+//---------------------------------------------------------------------
+function isInt(str){
+	return str.match(/^[\+|\-]?\d+$/) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// Function:   isPositiveInt
+// Parameter:  field value
+// Return:     true or false
+//---------------------------------------------------------------------
+function isPositiveInt(str){
+	return str.match(/^[\+]?\d+$/) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// Function:   isFloat
+// Parameter:  field value
+// Return:     true or false
+//---------------------------------------------------------------------
+function isFloat(str){
+	return (isInt(str) || str.match(/^[\+|\-]?\d+\.\d+$/)) ? true : false;
+}
+
+
+//---------------------------------------------------------------------
+// Function:   isFloat
+// Parameter:  field value
+// Return:     true or false
+//---------------------------------------------------------------------
+function isPositiveFloat(str){
+	return (isPositiveInt(str) || str.match(/^[\+]?[\d]*\.\d{1,2}$/)) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// Function:   isFloat
+// Parameter:  field value
+// Return:     true or false
+//---------------------------------------------------------------------
+function isPositiveFloatThreeDecimal(str){
+	return (isPositiveInt(str) || str.match(/^[\+]?[\d]*\.\d{1,3}$/)) ? true : false;
+}
+
+
+function isDecimal(str){
+	return (isPositiveInt(str) || str.match(/^[\+]?[\d]*\.\d{1,2}$/)) ? true : false;
+}
+
+
+//---------------------------------------------------------------------
+// Function:   isFloat
+// Parameter:  field value
+// Return:     true or false
+//---------------------------------------------------------------------
+function roundUp(number,decimal){
+	var point = raiseToPower(10,decimal);
+	return Math.round(number*point)/point;
+}
+
+
+function raiseToPower(n,d){
+	var result = 1;
+	for (var i = 0; i < d; i++){
+		result *= n;
+	}
+	return result;
+}
+
+//---------------------------------------------------------------------
+// Function:   compareInt
+// Parameter:  x, y
+// Return:     1 if x > y, 0 if x == y, or -1 if x < y
+//---------------------------------------------------------------------
+function compareInt(x,y){
+	var status = 0;
+	status = (x > y) ? 1  : status;
+	status = (x < y) ? -1 : status;
+	return status;
+}
+
+
+//---------------------------------------------------------------------
+// Function:   compareDate(d1,d2)
+// Parameters: d1 and d2 in format dd/mm/yyyy
+// Return:	   true if d1 is less than or equal d2, false otherwise
+//---------------------------------------------------------------------
+function compareDate(d1,d2){
+	d1 = new Date(d1.split("/")[0] + "/" + d1.split("/")[1] + "/" + d1.split("/")[2]);
+	d2 = new Date(d2.split("/")[0] + "/" + d2.split("/")[1] + "/" + d2.split("/")[2]);
+	return (d1 <= d2) ? true : false;
+}
+
+
+//---------------------------------------------------------------------
+// Function:   isLessThan
+// Parameter:  x, y
+// Return:     true or false
+//---------------------------------------------------------------------
+function isLessThan(x,y){
+	return (parseInt(x) < parseInt(y)) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// Function:   isLessThanOrEqual
+// Parameter:  x, y
+// Return:     true or false
+//---------------------------------------------------------------------
+function isLessThanOrEqual(x,y){
+	return (parseInt(x) <= parseInt(y)) ? true : false;
+}
+
+
+//---------------------------------------------------------------------
+// Function:   isGreaterThan
+// Parameter:  x, y
+// Return:     true or false
+//---------------------------------------------------------------------
+function isGreaterThan(x,y){
+	return (parseInt(x) > parseInt(y)) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// Function:   isGreaterThanOrEqual
+// Parameter:  x, y
+// Return:     true or false
+//---------------------------------------------------------------------
+function isGreaterThanOrEqual(x,y){
+	return (parseInt(x) >= parseInt(y)) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// Function:   isEquals
+// Parameter:  x, y
+// Return:     true or false
+//---------------------------------------------------------------------
+function isEqual(x,y){
+	return (parseInt(x) == parseInt(y)) ? true : false;
+}
+
+
+//---------------------------------------------------------------------
+// AND
+// true true := true
+// other := false
+//---------------------------------------------------------------------
+function and(x,y){
+	var n = (x == "") ? false : true;
+	var m = (y == "") ? false : true;
+	return (n && m) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// OR
+// false false := false
+// other := true
+//---------------------------------------------------------------------
+function or(x,y){
+	var n = (x == "") ? false : true;
+	var m = (y == "") ? false : true;
+	return (!n && !m) ? false : true;
+}
+
+
+//---------------------------------------------------------------------
+// XOR
+// true false or false true  := true
+// true true  or false false := false
+//---------------------------------------------------------------------
+
+function xor(x,y){
+	var n = (x == "") ? false : true;
+	var m = (y == "") ? false : true;
+	return ((n && !m) || (!n && m)) ? true : false;
+}
+
+//---------------------------------------------------------------------
+// NXOR
+// true false or false true  := false
+// true true  or false false := true
+//---------------------------------------------------------------------
+function nxor(x,y){
+	return !(xor(x,y));
+}
+
+function showHide(id,bool){
+	document.getElementById(id).style.display = (bool) ? '' : 'none';
+}
+
+
+function disabledBackButton(page){
+	history.pushState(null, null, page);
+		window.addEventListener('popstate', function(event) {
+		history.pushState(null, null, page);
+	});
+}
+
+function displayContractLanguageOptions(display) {
+	var multilanguage_options = document.getElementById("multilanguage-contract-options");
+	if(display) {
+		multilanguage_options.style.display = 'block';
+	} else {
+		multilanguage_options.style.display = 'none';
+	}
+}
+var err_required_field = "Please Correct Errors in Required Fields";
+var NO_TRACKING = "No tracking information found for ";
+var NO_ACCESS   = "Can't access tracking service. Please check connection";
+var ERROR       = "Unable to display tracking information for ";
+
+function setFieldProperty(f){
+	var tab = 0;
+	var max_track = f.max_track.value;
+	// name,id,mandatory,expression,min,max,cases,tabIndex
+	for(var i = 1; i <= max_track; i++){
+		setFieldAttribute(document.getElementById("prefix_"+i),"prefix_"+i,"M","num",3,3,"",++tab);
+		setFieldAttribute(document.getElementById("awb_"+i),"awb_"+i,"O","num",8,8,"",++tab);
+	}
+}
+
+function validateTracking(f){
+	var error = false;
+	var status = true;
+	var max_track = f.max_track.value;
+	document.getElementById("message").innerHTML="";
+	for(var i = 1; i <= max_track; i++){
+		var awb = document.getElementById("awb_"+i).value;
+		var prefix = document.getElementById("prefix_"+i).value;
+
+		if(prefix != ""){
+			status = checkField(document.getElementById("prefix_"+i));
+			if(!status) error = true;
+		}else{
+			document.getElementById("prefix_"+i).className = "input";
+		}
+
+		if(awb != ""){
+			status = checkField(document.getElementById("awb_"+i));
+			if(!status) error = true;
+		}else{
+			document.getElementById("awb_"+i).className = "input";
+		}
+	}
+	document.getElementById("submit").disabled = (error) ? true : false;
+}
+
+function triggerCarrierAction(currentIndex) {
+	updatePrefix(currentIndex);
+	enableAirWaybill(currentIndex);
+	enablePrefix(currentIndex);
+
+	var isCwNdc = jQuery("#is_cwndc").val();
+	if(isCwNdc != "1") {
+		jQuery("#prefix_req_" + currentIndex).removeClass( "hidden" );
+	}
+}
+
+function enableAirWaybill(currentIndex) {
+	jQuery("#awb_" + currentIndex).prop('disabled', false);
+	jQuery("#awb_req_" + currentIndex).removeClass( "hidden" );
+	jQuery("#awb_" + currentIndex).focus();
+}
+
+function enablePrefix(currentIndex) {
+	jQuery("#prefix_" + currentIndex).removeClass('mandatory');
+	jQuery("#prefix_" + currentIndex).prop('readonly', false);
+	jQuery("#prefix_" + currentIndex).prop('disabled', false);
+	jQuery("#prefix_" + currentIndex).removeClass("mcp-disabled");
+	jQuery("#prefix_" + currentIndex).prop("is_valid", 1);
+}
+
+function checkNextRow(currentIndex) {
+	var isCwNdc = jQuery("#is_cwndc").val();
+	if(isCwNdc == "1") {
+		chekNextRowNdc(currentIndex);
+	} else {
+		chekNextRowNonNdc(currentIndex);
+	}
+}
+
+function chekNextRowNonNdc(currentIndex) {
+	var awbElem = document.getElementById("awb_"+ currentIndex);
+	var dropdownElem = jQuery("#carrier_dropdown_" + nextIndex);
+	if((awbElem.value != "") && checkField(awbElem)) {
+		var nextIndex = currentIndex+1;
+		var dropdownElem = jQuery("#carrier_dropdown_" + nextIndex);
+		enablePrefix(currentIndex);
+		enablePrefix(nextIndex);
+		jQuery("#prefix_req_" + currentIndex).removeClass( "hidden" );
+		if(dropdownElem) {
+			dropdownElem.prop('disabled', false);
+			dropdownElem.removeClass( "mcp-disabled" );
+			dropdownElem.removeClass( "disabled" );
+		}
+	}
+}
+
+function chekNextRowNdc(currentIndex) {
+	var awbElem = document.getElementById("awb_"+ currentIndex);
+	if((awbElem.value != "") && checkField(awbElem)) {
+		var nextIndex = currentIndex+1;
+		var nextEdit = jQuery("#awb_" + nextIndex);
+		enablePrefix(currentIndex);
+		if(nextEdit) {
+			nextEdit.prop('disabled', false);
+			nextEdit.removeClass( "mcp-disabled" );
+			nextEdit.removeClass( "disabled" );
+			enablePrefix(nextIndex);
+		}
+	}
+}
+
+function setFieldFromIndex() {
+	var a = jQuery("#awb_1");		
+	var c = jQuery("#carrier_dropdown_2");
+	if(a.val() != "") {
+		a.prop("disabled", false);
+		c.removeClass("disabled");
+		c.prop("disabled", false);
+		c.removeClass("mcp-disabled");
+		trackingObj.captchaInit();
+		enablePrefix(1);
+	} else if (jQuery("#from_request").val() == "yes") {
+		trackingObj.captchaInit();
+		enablePrefix(1);
+		c.removeClass("mcp-disabled");
+	}
+}
+
+function setFieldFromIndexSingleAirline() {
+	var a = jQuery("#awb_1");		
+	var c = jQuery("#awb_2");
+	if(a.val() != "") {
+		a.prop("disabled", false);
+		c.removeClass("disabled");
+		c.prop("disabled", false);
+		trackingObj.captchaInit();
+		enablePrefix(1);
+		enablePrefix(2);
+	} else if (jQuery("#from_request").val() == "yes") {
+		trackingObj.captchaInit();
+		enablePrefix(1);
+		enablePrefix(2);
+	}
+}
+
+
+function updatePrefix(currentIndex){
+	var value = jQuery("#carrier_dropdown_"+currentIndex).val();
+	var values = value.split("-");
+	jQuery("#prefix_" + currentIndex).val(values[1]);
+	jQuery("#prefix_" + currentIndex).prop("disabled", false);
+}
+
+
+function clearError(){
+	document.getElementById("message").innerHTML="&nbsp;";
+	jQuery("#carrier_dropdown").css("background-color","#ffffff");
+}
+
+function showError(){
+	document.getElementById("message").innerHTML = "Please provide the required information *";
+	trackingObj.captchaReset();
+}
+
+function highlightCarrier(){
+	jQuery("#carrier_dropdown").css("background-color", "#FFD8DA");
+}
+
+
+// Get prefix and awd partner in the page.
+// Used for multiple tracking option
+function Awb(f, pfx, awb) {
+	var prefix = f[pfx].value;
+	var awb = f[awb].value;
+
+	if(prefix.length != 3) {
+		p="";
+	}
+
+	if(awb.length != 8) {
+		awb = "";
+	}
+
+	if(awb == "") {
+		return("");
+	}
+
+	if(prefix == ""){
+		highlightCarrier();
+		return("");
+	}
+
+	return(prefix+"-"+awb);
+}
+
+function CarrierId(dropdown) {
+	var selectedDD = document.getElementById(dropdown);
+	var carrierIdPrefix = selectedDD.options[selectedDD.selectedIndex].value;
+
+	return carrierIdPrefix.split("-")[0];
+}
+
+// Validate form and return the generated awb info object payload if no errors found
+function generateAwbInfoObj(captchaResponse) {
+	var i;
+	var r;
+	var carrierId;
+    var f = document.getElementById("form_tracking");
+	var awbInfoList = [];
+	var awbs = "";
+	var limit = jQuery("#max_track").val();
+	var isPortlet = f.is_portlet_val;
+
+	clearError();
+	jQuery('#tracking_details').hide();
+	jQuery('#tracking_events').hide();
+	jQuery(".result").not(':first').remove();
+	jQuery('#tracking_table_message').hide();
+	jQuery('#messageDis').html("");
+	
+	//Check if all the required air waybill fields are filled up
+	var trackingForm = jQuery("#form_tracking");
+	if (!trackingForm[0].checkValidity()) {
+		jQuery('#message_container').show();
+		showError();
+		return false;
+	} else {
+		jQuery('#message_container').hide();
+	}
+
+	for(i = 1; i <= limit; i++) {
+		if (document.getElementById("awb_"+i).value != "" && document.getElementById("prefix_"+i).value == "") {
+			jQuery('#message_container').show();
+			trackingObj.captchaReset();
+			return false;
+		} else {
+			jQuery('#message_container').hide();
+		}
+
+		if(document.getElementById("awb_"+i).is_valid == 0) {
+			if (!isPortlet) {
+				trackingObj.captchaReset();
+			}
+			return false;
+		}
+
+		if(document.getElementById("prefix_"+i).is_valid == 0) {
+			if (!isPortlet) {
+				trackingObj.captchaReset();
+			}
+			return false;
+		}
+
+		r = Awb(f, "prefix_"+i, "awb_"+i);
+
+		if((r != "") && (awbs != "")) {
+            awbs += "," + r;
+		}else if (r != ""){
+            awbs += r;
+        }
+
+
+		let trackingAirline = "";
+        if(document.getElementById("is_cwndc").value == "1") {
+        	carrierId = document.getElementById("ndc_routing_id").value;
+        	trackingAirline = document.getElementById("ndc2_tracking_airline").value;
+        	trackingAirline = (!trackingAirline) ? carrierId : trackingAirline;
+        } else {
+        	carrierId = CarrierId("carrier_dropdown_"+i);
+        }        
+        
+        //Create awbInfo
+        if ((r != "") && (carrierId != "")) {
+        	var awbInfo = new Object();
+        	awbInfo.awbNumber = r;
+        	awbInfo.carrierId = carrierId;
+        	awbInfo.trackingAirline = trackingAirline;
+        	awbInfoList.push(awbInfo);
+        }
+	} 
+
+	if (awbInfoList.length == 0) {
+		if (!isPortlet) {
+			trackingObj.captchaReset();
+		}
+		return false;
+	}
+	
+	f.Shipment_text.value = awbs;
+
+	var awbInfoObj = new Object();
+    awbInfoObj.portalId = jQuery("input[name='portal_id']").val();
+    awbInfoObj.awbInfo = awbInfoList;
+
+
+    return awbInfoObj;
+}
+
+// Get the AWB list entred in the page and call tracking microservice and display the result
+function CreateAwbList(captchaResponse, awbInfoObj) {
+	awbInfoObj.captchaResponse = captchaResponse;
+	var awbInfoJson = JSON.stringify(awbInfoObj);
+	var uuid = jQuery("#tracking_uuid").val();
+	var isPortlet = jQuery("#is_portlet_val").val();
+
+	jQuery.ajax({
+        type: "POST",
+        url: "tracking_service.asp?uuid=" + uuid + "&is_portlet=" + isPortlet,
+        data: awbInfoJson,
+        contentType: "application/json; charset=utf-8",
+        crossDomain: true,
+        dataType: "json",
+        beforeSend: function() {
+            jQuery('#loader').show();
+        },
+        success: function (resp) {
+        	jQuery("#tracking_details").empty();
+        	jQuery("#result_count").val(resp.length);
+        	sessionStorage.clear();
+
+        	for(var i=0; i<resp.length; i++) {
+        		var data = resp[i];
+        		sessionStorage.setItem("tracking.data" + i, JSON.stringify(data));
+            }
+
+            displayResult();
+            jQuery("#tracking_details").show();
+        },
+        error: function (jqXHR, status) {
+        	jQuery("#tracking_details").empty();
+            console.log("Issue in Tracking URL Access: " + jqXHR);
+            var e = $($.parseHTML(jQuery("#awb_error_template").html()));
+            e.find('.tracking_table_message').show();
+            e.find('.messageDis').html(getCommonMessage(NO_ACCESS));
+            jQuery("#tracking_details").append(e);
+            jQuery("#tracking_details").show();
+        },
+        complete: function() {
+        	trackingObj.captchaReset();
+            jQuery('#loader').hide();
+        }
+    });	
+}
+
+function displayInvalidUuid() {
+    jQuery("#tracking_details").empty();
+    var e = $($.parseHTML(jQuery("#awb_error_template").html()));
+    e.find('.tracking_table_message').show();
+    e.find('.messageDis').html("Provided userID is not valid. Please contact CHAMP for details.");
+    jQuery("#tracking_details").append(e);
+    jQuery("#tracking_details").show();
+}
+
+function displayInvalidRequest() {
+    jQuery("#tracking_details").empty();
+    var e = $($.parseHTML(jQuery("#awb_error_template").html()));
+    e.find('.tracking_table_message').show();
+    e.find('.messageDis').html("Invalid request, please contact CHAMP with the URL that you are using.");
+    jQuery("#tracking_details").append(e);
+    jQuery("#tracking_details").show();
+}
+
+function TrackingResult(){
+	var tbody_loading = document.getElementById("tbody_loading");
+	tbody_loading.style.display = "none";
+}
+
+function sortResult(arrays) {
+	var withEventTime = [];
+	var withoutEventTime = [];
+	var result = [];
+
+	jQuery.each(arrays, function(key, val) {
+		if (val && val.eventTime) {
+			withEventTime.push(val);
+		} else {
+			withoutEventTime.push(val);
+		}
+	});
+
+	var selectedVal = jQuery("#tracking_sort_option").val();
+	var d = new Date();
+	var currentYear = d.getFullYear();
+
+	if (withEventTime.length > 0) {
+		withEventTime.sort(function (a, b) {
+			var aDate = new Date(moment((a.eventTime), 'D-MMM-YYYY HH:mm').format());
+			var bDate = new Date(moment((b.eventTime), 'D-MMM-YYYY HH:mm').format());
+
+			if (selectedVal == "earliestfirst") {
+				if ((aDate - bDate) == 0) {
+					return 1;
+				}
+				return aDate - bDate;
+			}
+
+			if ((aDate - bDate) == 0) {
+				return -1;
+			}
+
+		  	return bDate - aDate;
+		});
+	}
+
+	if (withoutEventTime.length > 0) {
+		if (selectedVal == "earliestlast") {
+			withoutEventTime.reverse();
+		}
+	}
+
+	result.concat(withEventTime);
+	result.concat(withoutEventTime);
+
+	return withEventTime.concat(withoutEventTime);
+}
+
+function displayResult() {
+	jQuery("#tracking_sort").show();
+	jQuery("#tracking_details").empty();
+	var resultCount = jQuery("#result_count").val();
+
+	for (var i = 0; i < resultCount; i++) {
+		var data = JSON.parse(sessionStorage.getItem("tracking.data" + i));
+
+		if (data) {
+			if (data.responseCode == "OK") {
+				var e = $($.parseHTML(jQuery("#awb_result_template").html()));
+			    e.find('.tracking_table_message').hide();
+				e.find('.tracking_result').show();
+
+				e.find('.tracking_awb').html(data.awbNumber);
+				e.find('.tracking_origin').html(getCommonMessage("Origin: ") + data.origin);
+				e.find('.tracking_destination').html(getCommonMessage("Destination: ") + data.destination);
+				e.find('.tracking_pieces').html(getCommonMessage("Total Pieces: ") + data.totalPieces);
+				e.find('.tracking_weight').html(getCommonMessage("Weight: ") + data.weight);
+				e.find('.tracking_status').html(getCommonMessage("Status: ") + data.status);
+				e.find('.tracking_date').html(getCommonMessage("Date: ") + data.date);
+				e.find('.tracking_flight').html(getCommonMessage("Flight No: ") + data.flightNumber);
+			    
+			    if(Object.keys(data.events).length) {
+					var sortedArray = sortResult(data.events);
+					var counter = 1;
+
+					jQuery.each(sortedArray, function(key, val) {
+			        	var stripe = ((counter % 2) == 0) ? "row-stripe" : "";
+			        	var f =$($.parseHTML(jQuery("#event_template").html()));
+			        	f.find('div:first').parent().addClass(stripe);
+			        	f.find('.event_num').html( counter );
+			        	f.find('.event_status').html(val.status);
+			        	f.find('.event_detail').html(val.detail);
+			        	f.find('.event_date').html(val.eventTime.replace("T", " "));
+			        	
+			            e.find('.tracking_events').append(f);
+			            counter++;
+					});
+			    }
+
+			    jQuery("#tracking_details").append(e);
+			} else if (data.responseCode == "NOT_FOUND") {
+	        	var e = $($.parseHTML(jQuery("#awb_error_template").html()));
+	            e.find('.tracking_table_message').show();
+	            e.find('.messageDis').html(getCommonMessage(NO_TRACKING) + data.awbNumber);
+	            jQuery("#tracking_details").append(e);
+	        } else if (data.responseCode == "ERROR") {
+				var e = $($.parseHTML(jQuery("#awb_error_template").html()));
+				e.find('.tracking_table_message').show();
+				e.find('.messageDis').html(getCommonMessage(ERROR) + data.awbNumber);
+				jQuery("#tracking_details").append(e);
+	        }
+		}
+	}
+}
+var commonMessages;
+function initCommonMessages(messages) {
+	commonMessages = messages;
+}
+
+function getCommonMessage(originalMessage) {
+	var language = jQuery("#selected_language").val();
+	var translated = originalMessage;
+	var trimmed = originalMessage.replace("(", "").replace(")", "");
+	if (language && commonMessages[language] && commonMessages[language][trimmed]) {
+		translated = commonMessages[language][trimmed];
+	}
+	
+	return translated;
+}
+function Hash(){
+
+	this.length = 0;
+	this.items = new Array();
+	
+	for (var i = 0; i < arguments.length; i += 2) {
+		if (typeof(arguments[i + 1]) != 'undefined') {
+			this.items[arguments[i]] = arguments[i + 1];
+			this.length++;
+		}
+	}
+   
+	this.removeItem = function(in_key){
+		var tmp_previous;
+		if (typeof(this.items[in_key]) != 'undefined') {
+			this.length--;
+			var tmp_previous = this.items[in_key];
+			delete this.items[in_key];
+		}
+	   
+		return tmp_previous;
+	}
+
+	this.getItem = function(in_key) {
+		return this.items[in_key];
+	}
+
+	this.setItem = function(in_key, in_value){
+		var tmp_previous;
+		if (typeof(in_value) != 'undefined') {
+			if (typeof(this.items[in_key]) == 'undefined') {
+				this.length++;
+			}
+			else {
+				tmp_previous = this.items[in_key];
+			}
+
+			this.items[in_key] = in_value;
+		}
+	   
+		return tmp_previous;
+	}
+
+	this.hasItem = function(in_key){
+		return typeof(this.items[in_key]) != 'undefined';
+	}
+
+	this.clear = function(){
+		for (var i in this.items) {
+			delete this.items[i];
+		}
+		this.length = 0;
+	}
+}
+
+//---------------------------------------------------------
+// Usefull javascript standard functions
+// Andy Nguyen
+//---------------------------------------------------------
+// 'email',/^([a-zA-Z][a-zA-Z0-9]*[_\.\-\+]?)+[a-zA-Z][a-zA-Z0-9]*\@(([a-zA-Z0-9]+[-]?[a-zA-Z0-9]+)+[\.])+[a-zA-Z]{2,10}$/
+var hash = new Hash('prefix',/^\d{3}$/,
+	'awb',/^\d{8}$/,
+	'prefix-awb',/^\d{3}-\d{8}$/,
+	'tty_address',/^[a-zA-Z0-9\/]+$/,
+	'tty_address_or_pima',/^[a-zA-Z]{7}|[a-zA-Z0-9]{8}[0-9]{1,6}\/[a-zA-Z]{3}[0-9]{2}$/,
+	'char',/./,
+	'name',/^[a-zA-Z0-9 \,\'\.-]+$/,
+	'free_text',/[\w|\W]+/,
+	'text',/^[a-zA-Z0-9 \.-]+$/,
+	'alpha',/^[a-zA-Z ]+$/,
+	'code',/^[a-zA-Z]+$/,
+	'num',/^\d+$/,
+	'alphanum',/^[a-zA-Z0-9]+$/,
+	'alphanumspace',/^[a-zA-Z0-9 ]+$/,
+	'ddmonyyyy',/^[\d]{2}[a-zA-Z]{3}[\d]{4}$/,
+	'carrier',/^([a-zA-Z][\d]|[\d][a-zA-Z]|[a-zA-Z]{2})$/,
+	'city',/^[\w|\W]+\([a-zA-Z]{3}\)( - )[a-zA-Z ]+\[[a-zA-Z]{2}\]$/,
+	'city_or_code',/^[\w|\W]+\([a-zA-Z]{3}\)( - )[a-zA-Z ]+\[[a-zA-Z]{2}\]|^[a-zA-Z]{3}$/,
+	'city_code',/^[\w|\W]+\([a-zA-Z]{3}\)$/,
+	'city_name_or_code',/^[\w|\W]+\([a-zA-Z]{3}\)$|^[a-zA-Z]{3}$/,
+	'flight',/^(\d{3,4}[a-zA-Z]?)$/,
+	'interline_flight',/^(([a-zA-Z][\d]|[\d][a-zA-Z]|[a-zA-Z]{2})((\d{3,4}[a-zA-Z]?)?))$/,
+	'integer',/^[+|-]?\d+$/,'decimal',/^[+|-]?\d*\.?\d+$/,
+	'phone',/^[\+-\.]?\d*(\(\d+\))?\d+[\+-\.\d+]*\d+$/,
+	'email',/^([a-zA-Z0-9]+[&\-\.\_]?)+[a-zA-Z0-9]+\@(([a-zA-Z0-9]+[-\.]?)+[a-zA-Z0-9]+[\.])+[a-zA-Z]{2,10}$/,
+	'multiple_email',/^[a-zA-Z0-9&-_\.]+@[\w+-\.]+[a-zA-Z]{2,10}(\s?[;,]\s?[a-zA-Z0-9&-_\.]+@[\w+-\.]+[a-zA-Z]{2,10})*$/,
+	'uld_type',/^[a-zA-Z][a-zA-Z0-9]{2}$/,	'uld_sn',/^[a-zA-Z0-9][\d]{3,4}$/, 'uld_code',/^[a-zA-Z]{2}|[a-zA-Z][0-9]|[0-9][a-zA-Z]$/,
+	'pieces',/^((\d){1,4}|[a-zA-Z]{3})$/,
+	'commodity',/^((\d){4,7}|(\d)[a-zA-Z]{0,2}|[a-zA-Z](\d){0,3})$/);
+
+var err_awb_used_to_another_stock = "AWB used in another stock";
+var err_required_field = "Please correct errors in required fields";
+var err_awb_required   = "Please enter AWB number";
+var err_invalid_awb    = "Invalid AWB";
+
+//---------------------------------------------------------------------
+// initField()
+// Initialize field value, attribute
+//---------------------------------------------------------------------
+function initForm(f){
+	if(f){
+		setFieldProperty(f);
+	}
+}
+
+function changeToASCIIRule(type) {
+	for (i = 0; i < type.length; i++) { 
+	    hash.setItem(type[i],/^[\x00-\x7F]+$/);
+	}
+}
+
+function setFieldAttribute(field,id,req,exp,min,max,cases,tab){
+	if(field){
+		field.id = id;
+		field.req = req.toUpperCase();
+		field.exp = hash.getItem(exp);
+		field.min = min;
+		field.max = max;
+		field.cases = cases;
+		field.tabIndex = tab;
+	}
+}
+
+function resetField(field,value,req,class_name){
+	if(document.getElementById(field)){
+		document.getElementById(field).value = value;
+		document.getElementById(field).req = req;
+		//document.getElementById(field).className = "";
+		removeClass(document.getElementById(field),"mandatory");
+	}
+}
+
+function checkLockAWB(awb){
+	return false;
+}
+
+function validateForgotPassword() {
+	var f = document.form_forgot_password;
+
+	if (f.email.value == "") {
+		document.getElementById("message").innerHTML = getCommonMessage("Provide required information");
+		return false;
+	}
+
+	if (!checkField(f.email)) {
+		document.getElementById("message").innerHTML = getCommonMessage("You entered an invalid email");
+		return false
+	}
+
+	document.getElementById("message").innerHTML = "&nbsp;";
+	return true;
+}
+
+function validateForm(f, displayErrorMsg) {
+	var status = true;
+	displayErrorMsg = (displayErrorMsg == false) ? displayErrorMsg : true;
+
+	for (i = 0; i < f.elements.length; i++) {
+		var formElement = f.elements[i];
+		var bookType = getBookType();
+		var allotmentFields = getAllotmentFields();
+		var interlineFields = getInterlineFields();
+		var manualFields = getManualFields();
+
+		if (formElement.id == "price_class_flexselect" || formElement.id == "product_class_flexselect") {
+			continue;
+		}
+
+		if (bookType) {
+			if (bookType === "allotment") {
+				if (interlineFields.includes(formElement)) {
+					continue;
+				}
+				if (manualFields.includes(formElement)) {
+					continue;
+				}
+			}
+			if (bookType === "interline") {
+				if (allotmentFields.includes(formElement)) {
+					continue;
+				}
+				if (manualFields.includes(formElement)) {
+					continue;
+				}
+			}
+			if (bookType === "manual") {
+				if (interlineFields.includes(formElement)) {
+					continue;
+				}
+				if (allotmentFields.includes(formElement)) {
+					continue;
+				}
+			}
+			if (bookType === "booking") {
+				if (allotmentFields.includes(formElement)) {
+					continue;
+				}
+				if (interlineFields.includes(formElement)) {
+					continue;
+				}
+				if (manualFields.includes(formElement)) {
+					continue;
+				}
+			}
+		}
+
+		if (formElement && (formElement.type == "text" || formElement.type == "select-one" || formElement.type == "textarea" || formElement.type == "password")) {
+			//alert(i+") Name := " + f.elements[i].name + " <===> Value := " + f.elements[i].value);
+			var temp = checkField(formElement);
+			if (!temp) {
+				//alert("Field := " + f.elements[i].name + " --- Status := " + temp);
+				status = false;
+			}
+		}
+	}
+
+	if (displayErrorMsg) {
+		if (!status) {
+			document.getElementById("message").innerHTML = getCommonMessage("Provide required information");
+		} else {
+			document.getElementById("message").innerHTML = "";
+		}
+	}
+
+	return status;
+}
+
+function getBookType() {
+	var bookTypes = [...document.querySelectorAll('input.booking_type')];
+	var element = bookTypes?.find(el => el.checked);
+	return (element?.value) ? element.value : null
+}
+
+function getAllotmentFields() {
+	return [...document.querySelectorAll('input[id^="allotment_"][class^="form-control"][type="text"]')];
+}
+
+function getInterlineFields() {
+	return [
+		...document.querySelectorAll('input[id$=_in][class^="form-control"][type="text"]'), 
+		...document.querySelectorAll('select[id$=_in][class^="form-control"]')];
+}
+
+function getManualFields() {
+	return [...document.querySelectorAll('input[id^="manual_"][class^="form-control"][type="text"]')];
+}
+
+function checkField(field){
+
+	if(field == null){
+		return false;
+	}
+	var error = false;
+
+	var val = Trim(field.value);
+
+	if(field.cases){
+		// upper case
+		if(field.cases.toUpperCase() == "U"){
+			field.value = val.toUpperCase();
+		}
+
+		// lower case
+		if(field.cases.toUpperCase() == "L"){
+			field.value = val.toLowerCase();
+		}
+
+		// first letter upper case
+		if(field.cases.toUpperCase() == "F"){
+			field.value = val.replace(/^./, val.match(/^./)[0].toUpperCase());
+		}
+	}
+	// check field mandatory
+	error = ((field.req == "M") && isEmpty(field.value)) ? true : false;
+
+	// check field expression
+	if(!error){
+
+		if(field.getAttribute('maxdigit')){
+			var reg = "^\\d{1,"+field.getAttribute('maxdigit')+"}$|^\\d*\\.\\d+$";
+			//var reg = "^\\d{1,"+field.getAttribute('maxdigit')+"}$|^\\d+\\.\\d+$";
+			field.exp = new RegExp(reg,"");
+		}
+		error = ((field.value != "") && (!field.value.match(field.exp))) ? true : false;
+
+		if(!error){
+			if(field.id == "awb" || field.classList.contains('manifest-awb-number')){
+				var awb = field.value;
+				if(awb.length == 8){
+					if(document.getElementById("awb").getAttribute("check_awb") == "yes"){
+						var digit = awb.substr(0,7);
+						var check = awb.substr(7,1);
+						var remain = digit % 7;
+						error = (remain != check) ? true : false;
+						document.getElementById("check_awb_msg").innerHTML = (error) ? "<b>" + getCommonMessage(err_invalid_awb) + "</b>" : "";
+					}
+				}else{
+					error = (field.req == "M") ? true : false;
+				}
+			} 
+
+			if(field.getAttribute('check_pass_date')){
+				if(field.value != ""){
+					error = !isValidDate(field);
+				}
+			}
+
+			var aFormatFunction = field.getAttribute('check_format');  // aFormatFunction is the name of the function to call to validate the field. 
+ 			if (aFormatFunction != null) {  
+ 				var fprm = aFormatFunction.split("["); // there may be a parameter in braquets >
+ 				if(fprm.length > 1){
+ 	 	 			aFormatFunction = fprm[0];
+ 	 	 			var j = fprm[1].indexOf("]");
+ 	 	 			var param = fprm[1].substring(0,j);
+ 					//console.log ('checkField:: '+field.name+' / prm='+param);
+ 					error = ( !window[aFormatFunction](field.value, param) );               
+				}else{
+ 					error = ( !window[aFormatFunction](field.value) );
+	 			}
+ 			}
+		}
+	}
+
+	// check field length
+	if(!error){
+		error = ((field.value != "") && (field.min != 0) && (getLength(field.value) < field.min)) ? true : false;
+	}
+
+	if(!error){
+		error = ((field.value != "") && (field.max != 0) && (getLength(field.value) > field.max)) ? true : false;
+	}
+
+	// add status property 
+	field.is_valid = (error) ? "0" : "1";
+
+	// show error
+	// document.getElementById(field.id).className = (error) ? "mandatory" : "";
+	
+	if(error) {
+		addClass(field, "mandatory");
+	} else {
+		//if (field.name == 'oci_supplementaryinfo_1')
+		//	console.log ('checkfield:: removeClass mandatory on oci_supplementaryinfo_1');
+		removeClass(field, "mandatory");
+	}
+
+	return !error;
+}
+
+function isValidAWBCheckDigit(num){
+	var digit = num.substr(0,7);
+	var check = num.substr(7,1);
+	var remain = digit % 7;
+	return (remain != check) ? false : true;
+}
+
+function getAWBCount(start,end,check_awb){
+	var count = 0;
+	if(check_awb){
+		start = start.substr(0,7);
+		end = end.substr(0,7);
+		count = (end - start) + 1;
+	}else{
+		count = (end - start) + 1;
+	}
+	return count;
+}
+
+function checkGroup(group,array){
+	
+	var status = checkFieldArray(array); 
+	var	color = status ? "green" : "red";
+
+	if(document.getElementById(group)){
+		document.getElementById(group).src = "images/sq_"+color+".png";
+	}
+	
+	// jira WEBS-831 if AT, Flight estination triggers require zip code for FWB form
+	if(group == "sq_shipper"){
+		if(dest_trigger){
+			var zipcode = document.getElementById("shipper_zipcode").value;
+
+			document.getElementById("shipper_zipcode").req = "M";
+			document.getElementById("shipper_zipcode").className = (zipcode == "") ? "form-control mandatory" : "form-control";
+			document.getElementById("shipper_req_zipcode").innerHTML = "*";
+
+			zipcode = document.getElementById("consignee_zipcode").value;
+			document.getElementById("consignee_zipcode").req = "M";
+			document.getElementById("consignee_zipcode").className = (zipcode == "") ? "form-control mandatory" : "form-control";
+			document.getElementById("consignee_req_zipcode").innerHTML = "*";
+		}else{
+			var participant_type = document.getElementById("participant_type").value;
+
+			var ship_arr = new Array("shipper_account","shipper_name","shipper_street","shipper_city","shipper_zipcode","shipper_city","shipper_state","shipper_country","shipper_contact_type","shipper_contact_number");
+			var cnee_arr = new Array("consignee_account","consignee_name","consignee_street","consignee_city","consignee_zipcode","consignee_city","consignee_state","consignee_country","consignee_contact_type","consignee_contact_number");
+
+			if(isEmptyArray(ship_arr)){
+				document.getElementById("shipper_zipcode").req = "O";
+				document.getElementById("shipper_zipcode").className = "form-control";
+				document.getElementById("shipper_req_zipcode").innerHTML = "";			
+			}
+			if(isEmptyArray(cnee_arr)){
+				document.getElementById("consignee_zipcode").req = "O";
+				document.getElementById("consignee_zipcode").className = "form-control";
+				document.getElementById("consignee_req_zipcode").innerHTML = "";
+			}
+		}
+	}
+
+	return status;
+}
+
+
+function checkFieldArray(array){
+	var size = array.length;
+	var status = true;
+	var field = "";
+
+	for(var i = 0; i < size; i++){
+		field = document.getElementById(array[i]);
+		if(!checkField(field)){
+			status = false;
+		}
+	}
+	return status;
+}
+
+
+function enableField(field,target,required){
+	
+	if(checkField(field) && field.value != ""){
+		target.disabled = false;
+		target.req = (required) ? "M" : "O";
+		if (!target.value && required) {
+			addClass(document.getElementById(target.id), "mandatory");
+		} else {
+			removeClass(document.getElementById(target.id), "mandatory");
+		}
+	}else{
+		target.value = "";
+		target.req = "O";
+		target.disabled = true;
+		//document.getElementById(target.id).className = "input";
+		removeClass(document.getElementById(target.id), "mandatory");
+	}
+}
+
+function enableOtherChargeCode(field,target,required){
+	
+	if(checkField(field) && field.value != ""){
+		target.disabled = false;
+		target.req = (required) ? "M" : "O";
+		if(required) {
+			addClass(document.getElementById(target.id), "mandatory");
+		} else {
+			removeClass(document.getElementById(target.id), "mandatory");
+		}
+	}else{
+		
+		if(target.value != ""){
+			
+		}else{
+			target.value = "";
+			target.disabled = true;
+			target.req = "O";
+		}
+		
+		
+		//document.getElementById(target.id).className = "input";
+		removeClass(document.getElementById(target.id), "mandatory");
+	}
+}
+
+function disableField(field,list){
+
+	if(checkField(field) && field.value == ""){
+		for(var i = 1; i <= list.length; i++){
+			var target = list[i-1];
+			document.getElementById(target).disabled = true;
+			document.getElementById(target).req = "O";
+			document.getElementById(target).className = "form-control";
+			document.getElementById(target).value = "";
+		}
+	}
+}
+
+function setReadOnlyFields(f,form_name){
+
+	if(form_name == "fwb"){
+		if(f.fwb_ro.value == "yes"){
+			f.prefix.readOnly = true;
+			f.awb.readOnly = true;
+
+			if(f.shipper_name.value != ""){
+
+				dropDownListToTextBox('shipper_country','width:80%','form-control');
+				dropDownListToTextBox('shipper_contact_type','width:80%','form-control');
+				dropDownListToTextBox('consignee_country','width:80%','form-control');
+				dropDownListToTextBox('consignee_contact_type','width:80%','form-control');
+
+				f.shipper_contact_type.disabled = false;
+				f.shipper_contact_number.disabled = false;
+				f.consignee_contact_type.disabled = false;
+				f.consignee_contact_number.disabled = false;
+
+				f.shipper_name.readOnly = true;
+				f.shipper_name_2.readOnly = true;
+				f.shipper_street.readOnly = true;
+				f.shipper_street_2.readOnly = true;
+				f.shipper_city.readOnly = true;
+				f.shipper_state.readOnly = true;
+				f.shipper_zipcode.readOnly = true;
+				f.shipper_country.readOnly = true;
+				f.shipper_contact_type.readOnly = true;
+				f.shipper_contact_number.readOnly = true;
+
+				jQuery("#find_shipper").prop("onclick", null).off("click");
+
+				if(f.participant_type != "Shipper" && f.consignee_name.value != "") {
+					f.consignee_name.readOnly = true;
+					f.consignee_name_2.readOnly = true;
+					f.consignee_street.readOnly = true;
+					f.consignee_street_2.readOnly = true;
+					f.consignee_city.readOnly = true;
+					f.consignee_state.readOnly = true;
+					f.consignee_zipcode.readOnly = true;
+					f.consignee_country.readOnly = true;
+					f.consignee_contact_type.readOnly = true;
+					f.consignee_contact_number.readOnly = true;
+					
+					jQuery("#find_consignee").prop("onclick", null).off("click");
+				}
+			}
+
+			f.flight_origin.readOnly = true;
+			f.flight_destination.readOnly = true;
+
+			f.flight_carrier_1.readOnly = true;
+			f.flight_flight_1.readOnly = true;
+			f.flight_date_1.readOnly = true;
+			f.flight_carrier_2.readOnly = true;
+			f.flight_flight_2.readOnly = true;
+			f.flight_date_2.readOnly = true;
+
+
+			jQuery("#flight_date_1_wrapper > .input-group-addon ").prop("onclick", null).off("click");
+
+						f.routing_airport_1.readOnly = true;
+			f.routing_carrier_1.readOnly = true;
+			f.routing_airport_2.readOnly = true;
+			f.routing_carrier_2.readOnly = true;
+			f.routing_airport_3.readOnly = true;
+			f.routing_carrier_3.readOnly = true;
+			//f.special_handling_info.readOnly = true;
+
+
+		}
+	}
+}
+
+function getValueById(id){
+	var value = "";
+	if(document.getElementById(id)){
+		value = document.getElementById(id).value;
+	}
+	return value;
+}
+
+
+function removeTagId(id){ 
+	var element = document.getElementById(id);
+	var parent = element.parentNode; 
+	parent.removeChild(element); 
+	element = null;
+}
+
+function dropDownListToTextBox(id,style,css){ 
+	var element = document.getElementById(id);
+	var parent = element.parentNode; 
+	parent.removeChild(element); 
+	parent.innerHTML = '<input type="text" name="'+element.id+'" id="' + element.id + '" value="' + element.value + '" style="'+style+'" class="'+css+'"/>';
+	element = null;
+} 
+
+
+function isValidDate(field) {
+	var hash = new Hash('Jan','01','Feb','02','Mar','03','Apr','04','May','05','Jun','06','Jul','07','Aug','08','Sep','09','Oct','10','Nov','11','Dec','12');
+	var mon = field.value.substring(2,5).capitalize();
+	var d = field.value.substring(0,2);
+	var y = field.value.substring(5,9);
+			//field.value = d+mon+y;
+
+	var dd = parseInt(d,10);
+	var yy = parseInt(y,10);
+	var mm = parseInt(hash.getItem(mon),10)-1;
+	var current = new Date();
+	var date = new Date();
+	date.setFullYear(yy,mm,dd);
+
+	// has to be future date
+	var status = ((date.getMonth() == mm)) ? true : false;
+
+	if(status && field.getAttribute("check_pass_date") == "yes"){
+		status = (date >= current) ? true : false;
+	}
+
+	if(!status) {
+		addClass(field, "mandatory");
+	} else {
+		removeClass(field, "mandatory");
+	}
+	return status;
+}
+ 
+function callAjax(type,url, callback){
+	var ajax;
+	try{
+		// Opera 8.0+, Firefox, Safari
+		ajax = new XMLHttpRequest();
+	}catch(e){
+	// Internet Explorer Browsers
+		try{
+			ajax = new ActiveXObject("Msxml2.XMLHTTP");
+		}catch(e){
+			try{
+				ajax = new ActiveXObject("Microsoft.XMLHTTP");
+			}catch(e){
+				// Something went wrong
+				return false;
+			}
+		}
+	}
+	// Create a function that will receive data sent from the server
+
+	ajax.onreadystatechange = function(){
+		if(ajax.readyState == 4 && ajax.status == 200){
+			var text = ajax.responseText;
+			text = text.replace(/^\s+|\s+$/g,'');
+			text = text.replace(/(\r\n|\n|\r)/gm,"");
+			
+			if (callback) {
+				callback(text)
+			} else {
+				sendResponseText(type,text);
+			}
+		}
+	}
+	//ajax.open("GET","airline_get_terminal.asp?city_code="+city_code,true);
+	ajax.open("GET",url,true);
+	ajax.send(null); 
+}
+
+function callAjaxLockAWB(){
+	var prefix = document.getElementById('prefix').value;
+	var awb = document.getElementById('awb').value;
+	if(prefix != '' && awb != ''){
+		callAjax("lock_awb","ajax_lock_awb.asp?prefix="+prefix+"&awb="+awb);
+	}
+}
+
+function sendResponseText(type,text){
+	if(type == "terminal" && document.getElementById('terminal_list')){
+		document.getElementById('terminal_list').innerHTML = (text == "") ? "" : text;
+		document.getElementById('terminal_label').innerHTML = (text == "") ? "" : "&nbsp;Terminal";
+		document.getElementById('terminal_label').className = (text == "") ? "" : "page-form-label";
+	}else if(type == "assign_tty"){
+		document.getElementById('message').innerHTML = text;
+	}else if(type == "exist_awb"){
+		document.getElementById('check_awb_msg').innerHTML = (text == "0") ? "" : getCommonMessage("AWB is already in use");
+		document.getElementById('save_as_draft').disabled = (text == "0") ? false : true;
+	}else if(type == "lock_awb"){
+		document.getElementById('check_awb_msg').innerHTML = (text == "") ? "" : text;
+		var	color = (text == "") ? "green" : "red";
+		document.getElementById("sq_awb").src = "images/sq_"+color+".png";
+		
+	}else if(type == "valid_draft"){
+		var e = document.getElementById('with_draft');
+		e.value = (text == "0") ? "no" : "yes";
+		//e.className += (text == "0") ? " table-row" : " hidden";
+	}else if(type == "is_airline_id_valid"){
+		document.getElementById('airline_id_msg').innerHTML = (text == "0") ? "ID already in use" : "";
+		document.getElementById('is_valid_airline_id').value = text;
+		document.getElementById('airline_id').className = (text == "0") ? "mandatory" : "";
+	}else if(type == "exist_draft"){
+		if(text.indexOf("with_draft") > -1) { 				//the record is a draft, load from tb_draft
+			var draft_details = text.split(",");
+			
+			if(draft_details.length == 4) {
+				var type = draft_details[3];
+				var page = "";
+				if(type == 'FFR') {
+					page = "booking.asp";
+				}else if(type == 'FWB') {
+					page = "air_waybill.asp";
+				}else if(type == 'FHL') {
+					page = "house_waybill.asp";
+				}
+
+				//var with_draft = document.getElementById('with_draft').value;
+				if(page != "") {
+					goToPage(page+"?with_draft="+draft_details[0]+"&prefix="+draft_details[1]+"&awb="+draft_details[2]);
+				}
+			}
+		}
+	}else if(type == "fill_barcode_form"){
+
+		///$prefix,$awb,$origin,$destination,$total_pieces,$total_weight,$weight_code,$commodity,$handling_code
+		var status = (text == "") ? false : true;		
+		if(status){
+			var data = text.split(",");
+			var origin = data[0];
+			var destination = data[1];
+			var pieces = data[2];
+			var weight = data[3];
+			var weight_code = data[4];
+			var commodity = data[5];
+
+			document.getElementById('origin').value = origin;
+			document.getElementById('destination').value = destination;
+			document.getElementById('pieces').value = pieces;
+			document.getElementById('weight').value = weight;
+			document.getElementById('commodity').value = commodity;
+		}
+		document.getElementById('submit_barcode').disabled = (status) ? false : true;
+
+	}else if(type == "fill_awb_form"){
+		if(text == "") return;
+
+		var dontResetElements = new Array('oci_length','disable_declaration_values','uom','is_template_exist','template_type','save_template','save_draft','req_iata','security_row','fwb_ro','from_booking','dims_from_booking','account_currency_text','charge_currency_text','weight_valuation_prepaid_collect','participant_type','rate_logic','rate_as_agreed_enabled','is_valid_awb','lock_awb');
+		resetForm(document.getElementById("form_fwb"), dontResetElements);
+		document.getElementById("message").innerHTML = "";
+		if(document.getElementById("sum_total_label")) {
+			document.getElementById("sum_total_label").innerHTML = "";
+		}
+		
+		var isFromLatestAWB = false;
+		var obj = null;
+		try{
+			// if text is JSON then its coming from latest air waybill data
+	        obj = JSON.parse(text);
+	        isFromLatestAWB = true;
+	    } catch(e) {
+	    	 // if text is unparseable to JSON then the text is coming from booking data
+	    	 document.getElementById('dims_from_booking').value = "yes";
+	    }
+
+	    if (isFromLatestAWB) {
+	        setAWBForm(obj);	        	        
+	    } else {
+
+	        var info = text.split("@");
+
+			var default_details = info[0].split(",");
+			var shipment_info = info[1];
+			var shipment = info[1].split(",");
+			var shipper = info[2].split(",");
+			var consignee = info[3].split(",");
+			var flights = info[4].split("|");
+			
+			var prefix = default_details[0];
+			var awb = default_details[1];
+			var agent_iata = default_details[2];
+			var agent_name = default_details[3];
+			var agent_place = default_details[4];
+			var completion_name = default_details[5];
+			var completion_place = default_details[6];
+			var completion_date = default_details[7];
+			var remark_1 = (typeof default_details[8] === 'undefined') ? "" : default_details[8];
+			var remark_2 = (typeof default_details[9] === 'undefined') ? "" : default_details[9];
+
+			var origin = shipment[0];
+			var destination = shipment[1];
+			var pieces = shipment[2];
+			var weight = shipment[3];
+			var weight_code = shipment[4];
+			var volume = shipment[5];
+			var volume_info = shipment[6].replace(/;/g,',');
+			var commodity = shipment[7];
+			var handling_codes = shipment[8].split("/");
+			var special_handling_info_1 = (typeof shipment[9] === 'undefined') ? "" : shipment[9];
+			var special_handling_info_2 = (typeof shipment[10] === 'undefined') ? "" : shipment[10];
+			var chargeableWeight = computeChargeableWeight(weight,volume,weight_code);
+
+			// default values in AWB form
+			document.getElementById('prefix').value = prefix;
+			document.getElementById('awb').value = awb;
+			document.getElementById('type').value = 'Direct';
+			document.getElementById('weight_valuation_prepaid_collect').value = "P";
+			document.getElementById('prepaid_account_weight_valuation').checked = true;
+			document.getElementById('prepaid_account_other').checked = true;
+
+			if (info[5]) {
+				var prepaidCollect = info[5].trim().split(",");
+				console.log(prepaidCollect);
+				accountWeightValuation = prepaidCollect[0].substring(0, 1);
+				if (accountWeightValuation == "C") {
+					jQuery("#collect_account_weight_valuation").prop("checked", true);
+				} else {
+					jQuery("#prepaid_account_weight_valuation").prop("checked", true);
+				}
+
+				accountOther = prepaidCollect[1].substring(0, 1);
+				if (accountOther == "C") {
+					jQuery("#collect_account_other").prop("checked", true);
+				} else {
+					jQuery("#prepaid_account_other").prop("checked", true);
+				}
+
+				jQuery("input[name='account_weight_valuation']").val(accountWeightValuation);
+				jQuery("input[name='account_other']").val(accountOther);
+			}
+
+			if(document.getElementById("disable_declaration_values").value == "1") {
+				document.getElementById('account_carriage').value = "NVD";
+				document.getElementById('account_custom').value = "NCV";
+				document.getElementById('account_insurance').value = "XXX";
+			}
+			
+			document.getElementById('agent_iata').value = agent_iata;
+			document.getElementById('agent_name').value = agent_name;
+			document.getElementById('agent_place').value = agent_place;
+			document.getElementById('completion_name').value = completion_name;
+			document.getElementById('completion_place').value = completion_place;
+			document.getElementById('completion_date').value = formatDate(new Date(),'ddNNNy');
+			// end of default
+
+			document.getElementById('flight_origin').value = origin;
+			document.getElementById('flight_destination').value = destination;
+
+			// special handling information
+			document.getElementById('special_handling_info').value = special_handling_info_1;
+			document.getElementById('special_handling_info_2').value = special_handling_info_2;
+
+			// if remark not empty - put to the first field of osi
+			document.getElementById('other_service_info_1').value = remark_1;
+			document.getElementById('other_service_info_2').value = remark_2;
+
+			setAwbRtdFromBooking(shipment_info);
+
+			if(document.getElementById("rate_logic").value == "1") {
+
+				// other service info from dimensions coming from booking
+				var arr_volume_info = volume_info.split("-");
+				var actual_volume_info_len = arr_volume_info.length;
+
+				// if actual_volume_info_len is greater than dimensions count limit in AWB
+				if (actual_volume_info_len > 10) {
+					var osi_msg = "";
+					var temp = "";
+					for (var i = 10; i < actual_volume_info_len;i++) {
+						temp = arr_volume_info[i].split(",");
+						osi_msg += temp[0] +'X'+ temp[1] + 'X' + temp[2] + 'X' + temp[3];
+						if(i < actual_volume_info_len){
+							osi_msg += " ";
+						}
+					}
+
+					// format osi that will fit into 65 characters limit per field
+					var arr_osi = splitIntoLines(osi_msg,65);
+					
+					var counter = 1;
+					counter = (remark_1 != "" ? counter + 1 : counter);
+					counter = (remark_2 != "" ? counter + 1 : counter);
+					var msg = ""
+					for (var i = counter; i <= 3; i++) {
+						msg = arr_osi[i-counter] ? arr_osi[i-counter] : "";
+						if (msg != "") {
+							document.getElementById('other_service_info_' + i).value = msg;
+						}
+					}
+
+				}
+			}
+
+			document.getElementById('chargeable_1').value = chargeableWeight;	
+			document.getElementById('nature_1').value = commodity;
+
+			document.getElementById('shipper_account').value = shipper[0];
+			document.getElementById('shipper_name').value = shipper[1];
+			document.getElementById('shipper_street').value = shipper[2];
+			document.getElementById('shipper_city').value = shipper[3];
+			document.getElementById('shipper_state').value = shipper[4];
+			document.getElementById('shipper_zipcode').value = shipper[5];
+			document.getElementById('shipper_country').value = shipper[6];
+			document.getElementById('shipper_contact_type').value = shipper[7];
+			document.getElementById('shipper_contact_number').value = shipper[8];
+			document.getElementById('shipper_contact_type').disabled = false;
+			document.getElementById('shipper_contact_number').disabled = false;
+
+			document.getElementById('consignee_account').value = consignee[0];
+			document.getElementById('consignee_name').value = consignee[1];
+			document.getElementById('consignee_street').value = consignee[2];
+			document.getElementById('consignee_city').value = consignee[3];
+			document.getElementById('consignee_state').value = consignee[4];
+			document.getElementById('consignee_zipcode').value = consignee[5];
+			document.getElementById('consignee_country').value = consignee[6];
+			document.getElementById('consignee_contact_type').value = consignee[7];
+			document.getElementById('consignee_contact_number').value = consignee[8];
+			document.getElementById('consignee_contact_type').disabled = false;
+			document.getElementById('consignee_contact_number').disabled = false;
+			
+			if(document.form_fwb.fwb_ro.value == 'yes'){
+			 	setReadOnlyFields(document.form_fwb,"fwb");
+			 }
+
+			for(var i = 0; i < flights.length; i++){
+				var flight = flights[i].split(",");
+				var j = i + 1;
+				document.getElementById('flight_carrier_'+ j).value = flight[0];
+				document.getElementById('flight_flight_'+ j).value = flight[1];
+				document.getElementById('flight_date_'+ j).value = flight[2];
+				document.getElementById('routing_airport_'+ j).value = flight[3];
+				document.getElementById('routing_carrier_'+ j).value = flight[0];
+				if(j == 2) break;
+			}
+
+			for(var i = 0; i < handling_codes.length; i++){
+				document.getElementById('shc_'+(i+1)).value = handling_codes[i];
+			}
+	    }
+
+		checkGroup('sq_shipper',array_shipper);
+		checkShpCneZipcode();
+		checkAgentNotify();
+		checkFlight();
+		checkAccount();
+		checkCompletion();		
+		checkCharge();
+		// setAccessOtherCharges();
+		validateFWB(document.form_fwb, false);
+
+		if(isFromLatestAWB) {
+			document.getElementById("button_collapse_expand").value = "Expand";			
+			collapseExpand();
+		} else {
+			document.getElementById("is_sent_msg").innerHTML = "";
+		}
+
+		// if(document.getElementById("rate_logic").value == "1") {
+		// 	setWeightUnits();
+		// 	sumPieces();
+		// 	sumWeight();
+		// 	sumChargeable();
+		// 	sumVolume();
+		// 	hasVolumehasDIMS();
+		// 	//countRTD();
+		// 	setWeightVolumeRows();
+		// }
+		
+		checkWeightVolume();
+		checkFWB35Rule();
+		changeContactNumberLabel("awb");
+	}
+}
+
+function replaceEmptyStringIfUndifined(value) {
+	var returnValue = value;
+	if((typeof value === 'undefined') || (value == null) || (value == "null")) {
+		returnValue = "";
+	};
+
+	return returnValue;
+}
+
+// val = 15;15;15;15;15;0.051-25;25;25;25;25;0.391,consol,,,
+function setAwbRtdFromBooking(shipment_info) {
+	var shipment = shipment_info.split(",");
+
+	var pieces = shipment[2];	
+	var weightVal = shipment[3];
+	var weightCode = shipment[4].charAt(0);
+	var weight = weightCode + weightVal;	
+	var volumeVal = shipment[5];
+	var volumeCode = (weightCode == 'K') ? 'MC' : 'CF';
+	var volume = volumeCode + volumeVal;
+	var volumeInfo = shipment[6].replace(/;/g,',');
+	var commodity = shipment[7];
+
+	jQuery('#rtd_table_summary > tbody').html("");
+
+	// 1st row RTD : pieces, weight, commodity
+	var template = getRtdFromBookingTemplate(1, pieces, weight, commodity, "", "");
+	jQuery('#rtd_table_summary').append(template);
+
+	var rtdRowCount = 2;
+
+	// Next row RTD: dimensions
+	if (volumeInfo) {
+		var dimensionUnit;
+		var dimensions = volumeInfo.split("-");	
+
+		if (volumeInfo.indexOf("#") >= 0) {
+			dimensionUnit = volumeInfo.substring(volumeInfo.indexOf("#") + 1);
+		} else {
+			dimensionUnit = (weightCode == 'K') ? 'CMT' : 'INH';
+		}
+
+		rtdRowCount += dimensions.length;
+
+		if (rtdRowCount > 12) {
+			rtdRowCount = 12; // max RTD lines only is 12, exceeding dimensions will be added on OSI fields
+		}
+
+		jQuery('#dims_count_from_booking').val(dimensions.length);
+		for (var i = 0; i < dimensions.length; i++) {
+			var dimsInfo = dimensions[i].split(",");
+
+			// K5/CMT5-5-5/5	
+			var dims = weightCode + dimsInfo[4] + "/" 
+				+ dimensionUnit 
+				+ dimsInfo[0] + "-" 
+				+ dimsInfo[1] + "-" 
+				+ dimsInfo[2] + "/" 
+				+ dimsInfo[3];
+
+			template = getRtdFromBookingTemplate(i + 2, "", "", "", dims, "");
+			jQuery('#rtd_table_summary').append(template);
+		}	
+	}
+
+	// Last row RTD: volume
+	template = getRtdFromBookingTemplate(rtdRowCount, "", "", "", "", volume);
+	jQuery('#rtd_table_summary').append(template);
+
+	jQuery('#rtd_row_count').val(rtdRowCount);
+
+   	document.getElementById("pieces_sum").value        = pieces;
+   	document.getElementById("weight_sum").value        = weightVal;
+   	document.getElementById("chargeable_sum").value    = weightVal;
+   	document.getElementById("total_details_sum").value = 0;
+   	document.getElementById("volume_sum").value        = volumeVal;
+
+   	jQuery('#from_booking').val("yes");
+}
+
+function getRtdFromBookingTemplate(i, pcs, wgt, ntr, dim, vol) {
+	var template = "<tr class='form-inline'>" + 
+						"<td>" + pcs + "</td>" + 
+						"<td>" + wgt + "</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" +
+						"<td>" + ntr + "</td>" + 
+						"<td>" + dim + "</td>" + 
+						"<td>" + vol + "</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>" + 
+						"<td>&nbsp;</td>";
+					
+
+	template += 
+	"<input type='hidden' name='piece_" + i + "' id='piece_" + i + "' value = '" + pcs + "' from_booking>"+  
+	"<input type='hidden' name='weight_" + i + "' id='weight_" + i + "' value = '" + wgt + "' from_booking>" + 
+	"<input type='hidden' name='rate_class_" + i + "' id='rate_class_" + i + "' >" + 
+	"<input type='hidden' name='commodity_" + i + "' id='commodity_" + i + "' >" + 
+	"<input type='hidden' name='chargeable_" + i + "' id='chargeable_" + i + "' >" + 
+	"<input type='hidden' name='rate_" + i + "' id='rate_" + i + "' >" + 
+	"<input type='hidden' name='total_" + i + "' id='total_" + i + "' >" + 
+	"<input type='hidden' name='nature_" + i + "' id='nature_" + i + "' value = '" + ntr + "' from_booking>" + 
+	"<input type='hidden' name='consolidation_" + i + "' id='consolidation_" + i + "'>" + 
+	"<input type='hidden' name='dimensions_" + i + "' id='dimensions_" + i + "' value = '" + dim + "' from_booking>" + 
+	"<input type='hidden' name='volume_" + i + "' id='volume_" + i + "' value = '" + vol + "'>" + 
+	"<input type='hidden' name='uld_type_" + i + "' id='uld_type_" + i + "' >" + 
+	"<input type='hidden' name='uld_serial_number_" + i + "' id='uld_serial_number_" + i + "' >" + 
+	"<input type='hidden' name='uld_owner_code_" + i + "' id='uld_owner_code_" + i + "' >" + 
+	"<input type='hidden' name='slac_" + i + "' id='slac_" + i + "' >" + 
+	"<input type='hidden' name='hcc_" + i + "' id='hcc_" + i + "' >" + 
+	"<input type='hidden' name='country_code_" + i + "' id='country_code_" + i + "' >" + 
+	"<input type='hidden' name='service_code_" + i + "' id='service_code_" + i + "' >";
+	
+	template += "</tr>";
+
+	return template;
+}
+
+function setAWBForm(obj) {
+	
+	document.getElementById("is_sent_msg").innerHTML = getCommonMessage("This AWB has been transmitted to the airline.");
+	document.getElementById('prefix').value = replaceEmptyStringIfUndifined(obj.prefix);
+	document.getElementById('awb').value = replaceEmptyStringIfUndifined(obj.awb);
+	document.getElementById('type').value = replaceEmptyStringIfUndifined((obj.type ? obj.type : 'Direct'));
+	document.getElementById('awb_pieces').value = replaceEmptyStringIfUndifined(obj.awb_pieces);
+	document.getElementById('awb_weight').value = replaceEmptyStringIfUndifined(obj.awb_weight);
+	document.getElementById('awb_weight_code').value = replaceEmptyStringIfUndifined(obj.awb_weight_code);
+
+	// shipper
+	var shipper = obj.shipper;
+	if (shipper != null) {
+		document.getElementById('shipper_account').value = replaceEmptyStringIfUndifined(shipper.account);
+		document.getElementById('shipper_contact_number').value = replaceEmptyStringIfUndifined(shipper.contact_number);
+		document.getElementById('shipper_name').value = replaceEmptyStringIfUndifined(shipper.name);
+		document.getElementById('shipper_name_2').value = replaceEmptyStringIfUndifined(shipper.name_2);
+		document.getElementById('shipper_zipcode').value = replaceEmptyStringIfUndifined(shipper.zipcode);
+		document.getElementById('shipper_city').value = replaceEmptyStringIfUndifined(shipper.city);
+		document.getElementById('shipper_street').value = replaceEmptyStringIfUndifined(shipper.street);
+		document.getElementById('shipper_street_2').value = replaceEmptyStringIfUndifined(shipper.street_2);
+		document.getElementById('shipper_state').value = replaceEmptyStringIfUndifined(shipper.state);
+		document.getElementById('shipper_country').value = replaceEmptyStringIfUndifined(shipper.country);
+		document.getElementById('shipper_contact_type').value = replaceEmptyStringIfUndifined(shipper.contact_type);
+		document.getElementById('shipper_contact_number').disabled = (shipper.contact_type == "") ? true : false;
+	}
+
+	// consignee
+	var consignee = obj.consignee;
+	if (consignee != null) {
+		document.getElementById('consignee_account').value = replaceEmptyStringIfUndifined(consignee.account);
+		document.getElementById('consignee_contact_number').value = replaceEmptyStringIfUndifined(consignee.contact_number);
+		document.getElementById('consignee_name').value = replaceEmptyStringIfUndifined(consignee.name);
+		document.getElementById('consignee_name_2').value = replaceEmptyStringIfUndifined(consignee.name_2);
+		document.getElementById('consignee_zipcode').value = replaceEmptyStringIfUndifined(consignee.zipcode);
+		document.getElementById('consignee_city').value = replaceEmptyStringIfUndifined(consignee.city);
+		document.getElementById('consignee_street').value = replaceEmptyStringIfUndifined(consignee.street);
+		document.getElementById('consignee_street_2').value = replaceEmptyStringIfUndifined(consignee.street_2);
+		document.getElementById('consignee_state').value = replaceEmptyStringIfUndifined(consignee.state);
+		document.getElementById('consignee_country').value = replaceEmptyStringIfUndifined(consignee.country);
+		document.getElementById('consignee_contact_type').value = replaceEmptyStringIfUndifined(consignee.contact_type);
+		document.getElementById('consignee_contact_number').disabled = (consignee.contact_type == "") ? true : false;
+	}
+
+
+	// agent
+	var agent = obj.agent;
+	if (agent != null) {
+		document.getElementById('agent_name').value = replaceEmptyStringIfUndifined(agent.name);
+		document.getElementById('agent_place').value = replaceEmptyStringIfUndifined(agent.place);
+		document.getElementById('agent_iata').value = replaceEmptyStringIfUndifined(agent.iata);
+		document.getElementById('agent_account').value = replaceEmptyStringIfUndifined(agent.account);
+		document.getElementById('agent_cass').value = replaceEmptyStringIfUndifined(agent.cass);
+	}
+	// notify
+	var notify = obj.notify;
+	if (notify != null) {
+		document.getElementById('notify_contact_number').value = replaceEmptyStringIfUndifined(notify.contact_number);
+		document.getElementById('notify_name').value = replaceEmptyStringIfUndifined(notify.name);
+		document.getElementById('notify_name_2').value = replaceEmptyStringIfUndifined(notify.name_2);
+		document.getElementById('notify_zipcode').value = replaceEmptyStringIfUndifined(notify.zipcode);
+		document.getElementById('notify_city').value = replaceEmptyStringIfUndifined(notify.city);
+		document.getElementById('notify_street').value = replaceEmptyStringIfUndifined(notify.street);
+		document.getElementById('notify_street_2').value = replaceEmptyStringIfUndifined(notify.street_2);
+		document.getElementById('notify_state').value = replaceEmptyStringIfUndifined(notify.state);
+		document.getElementById('notify_country').value = replaceEmptyStringIfUndifined(notify.country);
+		document.getElementById('notify_contact_type').value = replaceEmptyStringIfUndifined(notify.contact_type);
+		document.getElementById('notify_contact_number').disabled = (notify.contact_type == "") ? true : false;
+	}
+
+
+	// flight
+	var flight = obj.flight;
+	if (flight!=null){
+		document.getElementById('special_handling_info').value = replaceEmptyStringIfUndifined(flight.special_handling_info);
+		document.getElementById('special_handling_info_2').value = replaceEmptyStringIfUndifined(flight.special_handling_info_2);
+		document.getElementById('special_handling_info_3').value = replaceEmptyStringIfUndifined(flight.special_handling_info_3);
+		document.getElementById('flight_origin').value = replaceEmptyStringIfUndifined(flight.origin);
+		document.getElementById('flight_destination').value = replaceEmptyStringIfUndifined(flight.destination);
+		if (flight.booking_1 != null) {
+			document.getElementById('flight_flight_1').value = replaceEmptyStringIfUndifined(flight.booking_1.flight);
+			document.getElementById('flight_date_1').value = replaceEmptyStringIfUndifined(flight.booking_1.date);
+			document.getElementById('flight_carrier_1').value = replaceEmptyStringIfUndifined(flight.booking_1.carrier);
+		}
+
+		if (flight.booking_2 != null) {
+			document.getElementById('flight_flight_2').value = replaceEmptyStringIfUndifined(flight.booking_2.flight);
+			document.getElementById('flight_date_2').value = replaceEmptyStringIfUndifined(flight.booking_2.date);
+			document.getElementById('flight_carrier_2').value = replaceEmptyStringIfUndifined(flight.booking_2.carrier);
+		}
+
+		if (flight.routing_1 != null) {
+			document.getElementById('routing_airport_1').value = replaceEmptyStringIfUndifined(flight.routing_1.airport);
+			document.getElementById('routing_carrier_1').value = replaceEmptyStringIfUndifined(flight.routing_1.carrier);
+		}
+
+		if (flight.routing_2 != null) {
+			document.getElementById('routing_airport_2').value = replaceEmptyStringIfUndifined(flight.routing_2.airport);
+			document.getElementById('routing_carrier_2').value = replaceEmptyStringIfUndifined(flight.routing_2.carrier);
+		}
+		if (flight.routing_3 != null) {
+			document.getElementById('routing_airport_3').value = (flight.routing_3.airport) ? flight.routing_3.airport : "";
+			document.getElementById('routing_carrier_3').value = (flight.routing_3.carrier) ? flight.routing_3.carrier : "";
+		}
+	}
+	// account	
+	var account = obj.account;
+	if (account !=null) {
+		document.getElementById('account_insurance').value = replaceEmptyStringIfUndifined(account.insurance);
+		document.getElementById('account_currency_text').value = replaceEmptyStringIfUndifined(account.currency_text);
+		document.getElementById('account_charge_code').value = replaceEmptyStringIfUndifined(account.charge_code);
+		document.getElementById('account_currency_code').value = replaceEmptyStringIfUndifined(account.currency_code);
+		document.getElementById('account_currency_code_flexselect').value = replaceEmptyStringIfUndifined(account.currency_text);
+		document.getElementById('account_carriage').value = replaceEmptyStringIfUndifined(account.carriage);
+		document.getElementById('account_custom').value = replaceEmptyStringIfUndifined(account.custom);
+		document.getElementById('prepaid_account_weight_valuation').checked = (account.weight_charge == "P") ? true: false;
+		document.getElementById('collect_account_weight_valuation').checked = (account.weight_charge == "C") ? true: false;
+		document.getElementById('prepaid_account_other').checked = (account.other_charge == "P") ? true: false;
+		document.getElementById('collect_account_other').checked = (account.other_charge == "C") ? true: false;
+		document.getElementById('weight_valuation_prepaid_collect').value = replaceEmptyStringIfUndifined(account.weight_charge);
+
+		for(var i=1; i<=4; i++) {
+			if (account['id_'+i]==null || account['info_'+i]==null) {
+				continue;
+			}
+			document.getElementById('account_id_'+i).value = replaceEmptyStringIfUndifined(account['id_'+i]);
+			document.getElementById('account_info_'+i).value = replaceEmptyStringIfUndifined(account['info_'+i]);		
+			document.getElementById('account_info_'+i).disabled = (account['id_'+i] == "") ? true : false;
+
+			if(i>1) {
+				document.getElementById('account_id_'+i).disabled = (account['id_'+(i-1)] == "") ? true : false;
+			}
+		}
+	}
+	// weight
+	var weight = obj.weight;
+	if (weight != null) {
+//		var rate_logic_enabled = (document.getElementById("rate_logic").value == "1") ? true : false;
+
+//		document.getElementById('rate_as_agreed').checked = (replaceEmptyStringIfUndifined(weight.rate_as_agreed) == "yes") ? true : false;
+//		document.getElementById('rate_as_agreed').value = replaceEmptyStringIfUndifined(weight.rate_as_agreed);
+
+
+//		document.getElementById('sum_total').value = replaceEmptyStringIfUndifined(weight.sum_total);
+//		document.getElementById('slac').value = replaceEmptyStringIfUndifined(weight.slac);
+//		if(rate_logic_enabled) {		
+//			document.getElementById('total_pieces').value = replaceEmptyStringIfUndifined(weight.total_pieces);
+//			document.getElementById('total_chargeable').value = replaceEmptyStringIfUndifined(weight.total_chargeable);
+//			document.getElementById('total_volume').value = replaceEmptyStringIfUndifined(weight.total_volume);
+//			document.getElementById('total_weight').value = replaceEmptyStringIfUndifined(weight.total_weight);
+//		} else {
+//			document.getElementById('sum_total_label').innerHTML = replaceEmptyStringIfUndifined(weight.sum_total);
+//		}
+		
+		var isRateAsAgreed = ((replaceEmptyStringIfUndifined(weight.rate_as_agreed) == "yes") 
+			&& (document.getElementById("rate_as_agreed_enabled").value == "1"));
+		if(isRateAsAgreed){
+			document.getElementById('rate_as_agreed_section').style.display = "inline";
+			document.getElementById('rate_as_agreed_label').innerHTML = "Yes";
+			document.getElementById('rate_as_agreed').value = "yes";
+		}
+		document.getElementById('rtd_row_count').value = replaceEmptyStringIfUndifined(weight.row_count);
+
+		if (weight.row_count > 0) {
+   	    	jQuery("#weight_code").val(weight.weight_code);
+			jQuery('#rtd_table_summary > tbody').html("");
+
+		var w_obj = null;
+	    	var addRow;
+
+	    	for(var i = 1; i <= weight.row_count; i++) {
+			w_obj = weight['weight_'+i];
+			if (w_obj == null) {
+				continue;
+			}
+				var rate = "";
+				var total = "";
+				if(!isRateAsAgreed){
+					rate = replaceEmptyStringIfUndifined(w_obj.rate);
+					total = replaceEmptyStringIfUndifined(w_obj.total);
+				}
+	       	    addRow  = "<tr class='form-inline'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.pieces) + "</td>";
+	       	    addRow += "<input type='hidden' name='piece_" + i + "' id='piece_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.pieces) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.weight) + "</td>";
+	       	    addRow += "<input type='hidden' name='weight_" + i + "' id='weight_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.weight) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.rate_class) + "</td>";
+	       	    addRow += "<input type='hidden' name='rate_class_" + i + "' id='rate_class_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.rate_class) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.commodity) + "</td>";
+	       	    addRow += "<input type='hidden' name='commodity_" + i + "' id='commodity_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.commodity) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.chargeable) + "</td>";
+	       	    addRow += "<input type='hidden' name='chargeable_" + i + "' id='chargeable_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.chargeable) + "'>";
+	       	    addRow += "<td>" + rate + "</td>";
+	       	    addRow += "<input type='hidden' name='rate_" + i + "' id='rate_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.rate) + "'>";
+	       	    addRow += "<td>" + total + "</td>";
+	       	    addRow += "<input type='hidden' name='total_" + i + "' id='total_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.total) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.nature) + replaceEmptyStringIfUndifined(w_obj.consolidation) + "</td>";
+	       	    addRow += "<input type='hidden' name='nature_" + i + "' id='nature_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.nature) + "'>";
+//	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.consolidation) + "</td>";
+	       	    addRow += "<input type='hidden' name='consolidation_" + i + "' id='consolidation_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.consolidation) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.dimensions) + "</td>";
+	       	    addRow += "<input type='hidden' name='dimensions_" + i + "' id='dimensions_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.dimensions) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.volume) + "</td>";
+	       	    addRow += "<input type='hidden' name='volume_" + i + "' id='volume_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.volume) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.uld_type) + "</td>";
+	       	    addRow += "<input type='hidden' name='uld_type_" + i + "' id='uld_type_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.uld_type) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.uld_serial_number) + "</td>";
+	       	    addRow += "<input type='hidden' name='uld_serial_number_" + i + "' id='uld_serial_number_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.uld_serial_number) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.uld_owner_code) + "</td>";
+	       	    addRow += "<input type='hidden' name='uld_owner_code_" + i + "' id='uld_owner_code_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.uld_owner_code) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.slac) + "</td>";
+	       	    addRow += "<input type='hidden' name='slac_" + i + "' id='slac_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.slac) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.hcc) + "</td>";
+	       	    addRow += "<input type='hidden' name='hcc_" + i + "' id='hcc_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.hcc) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.country_code) + "</td>";
+	       	    addRow += "<input type='hidden' name='country_code_" + i + "' id='country_code_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.country_code) + "'>";
+	       	    addRow += "<td>" + replaceEmptyStringIfUndifined(w_obj.service_code) + "</td>";
+	       	    addRow += "<input type='hidden' name='service_code_" + i + "' id='service_code_" + i + "' value='" + replaceEmptyStringIfUndifined(w_obj.service_code) + "'>";
+	       	    if (i==1) {
+	       	    	var quantity = obj.quantity_details;
+       	    	if (quantity != null) {
+		       	    	var pieces_sum = (quantity.hasOwnProperty("pieces_sum")) ? quantity.pieces_sum : 0;
+		       	    	var weight_sum = (quantity.hasOwnProperty("weight_sum")) ? quantity.weight_sum : 0;
+		       	    	var volume_sum = (quantity.hasOwnProperty("volume_sum")) ? quantity.volume_sum : 0;
+		       	    	var chargeable_sum = (quantity.hasOwnProperty("chargeable_sum")) ? quantity.chargeable_sum : 0;
+		       	    	var total_details_sum = (quantity.hasOwnProperty("total_details_sum")) ? quantity.total_details_sum : 0;
+
+		       	    	jQuery("#pieces_sum").val(pieces_sum);
+		       	    	jQuery("#weight_sum").val(weight_sum);
+		       	    	jQuery("#volume_sum").val(volume_sum);
+		       	    	jQuery("#chargeable_sum").val(chargeable_sum);
+		       	    	jQuery("#total_details_sum").val(total_details_sum);
+	       	    	}
+	       	    }
+	       	    addRow += "</tr>";
+	       	    jQuery('#rtd_table_summary').append(addRow);
+			}
+		}
+
+		// hcc
+//		var hcc = weight.hcc;
+//		if (hcc!=null) {
+//			for(var i=1; i<=Object.keys(hcc).length; i++) {
+//				document.getElementById('hcc_'+i).value = replaceEmptyStringIfUndifined(hcc['hcc_'+i]);
+//			}
+//		}	
+	}
+	
+	// charges
+	var charge = obj.charge;
+	if (charge != null) {
+		var collect_charge = charge.collect;
+	    if (collect_charge != null) {
+	            document.getElementById('collect_weight').value = replaceEmptyStringIfUndifined(collect_charge.weight);
+	            document.getElementById('collect_total').value = replaceEmptyStringIfUndifined(collect_charge.total);
+	            document.getElementById('collect_valuation').value = replaceEmptyStringIfUndifined(collect_charge.valuation);
+	            document.getElementById('collect_due_carrier').value = replaceEmptyStringIfUndifined(collect_charge.due_carrier);
+	            document.getElementById('collect_tax').value = replaceEmptyStringIfUndifined(collect_charge.tax);
+	            document.getElementById('collect_due_agent').value = replaceEmptyStringIfUndifined(collect_charge.due_agent);
+	    }
+
+	    var prepaid_charge = charge.prepaid;
+	    if (prepaid_charge != null) {
+	            document.getElementById('prepaid_weight').value = replaceEmptyStringIfUndifined(prepaid_charge.weight);
+	            document.getElementById('prepaid_total').value = replaceEmptyStringIfUndifined(prepaid_charge.total);
+	            document.getElementById('prepaid_valuation').value = replaceEmptyStringIfUndifined(prepaid_charge.valuation);
+	            document.getElementById('prepaid_due_carrier').value = replaceEmptyStringIfUndifined(prepaid_charge.due_carrier);
+	            document.getElementById('prepaid_tax').value = replaceEmptyStringIfUndifined(prepaid_charge.tax);
+	            document.getElementById('prepaid_due_agent').value = replaceEmptyStringIfUndifined(prepaid_charge.due_agent);
+	    }
+
+	    var dest_charge = charge.destination;
+	    if (dest_charge != null) {
+	            document.getElementById('charge_total').value = replaceEmptyStringIfUndifined(dest_charge.total);
+	            document.getElementById('charge_destination_charge').value = replaceEmptyStringIfUndifined(dest_charge.destination_charge);
+	            document.getElementById('charge_conversion_rate').value = replaceEmptyStringIfUndifined(dest_charge.conversion_rate);
+	            document.getElementById('charge_currency_text').value = replaceEmptyStringIfUndifined(dest_charge.currency_text);
+				document.getElementById('charge_currency_code').value = replaceEmptyStringIfUndifined(dest_charge.currency_code);
+				document.getElementById('charge_currency_code_flexselect').value = replaceEmptyStringIfUndifined(dest_charge.currency_text);
+	            document.getElementById('charge_destination_currency').value = replaceEmptyStringIfUndifined(dest_charge.destination_currency);         
+	    }
+	 
+	 
+
+		var other_charge = charge.other;
+		
+		if (other_charge != null) {
+
+			document.getElementById('charge_type_1').value = replaceEmptyStringIfUndifined(other_charge.charge_type_1);
+			document.getElementById('charge_type_2').value = replaceEmptyStringIfUndifined(other_charge.charge_type_2);
+			document.getElementById('charge_type_3').value = replaceEmptyStringIfUndifined(other_charge.charge_type_3);
+			document.getElementById('charge_type_4').value = replaceEmptyStringIfUndifined(other_charge.charge_type_4);
+
+			for (var key in other_charge) {
+					if(key == "charge_type_1" || key == "charge_type_2" || key == "charge_type_3" || key == "charge_type_4"){
+						continue;
+					}
+	    			else if (other_charge.hasOwnProperty(key)) {
+
+	    				if (other_charge[key] != ""){
+	    					document.getElementById(key).value = replaceEmptyStringIfUndifined(other_charge[key]);
+	    					document.getElementById(key).disabled = false;
+	    				}
+	    	   			
+	    			}
+			}
+
+		 	var element = document.getElementById("charge_code_1");
+	  	  	element.classList.remove("mandatory");	
+		}
+	}
+
+	// custom
+	var custom = obj.custom;
+	if (custom != null) {
+		document.getElementById('origin_code').value = replaceEmptyStringIfUndifined(custom.origin_code);
+        document.getElementById('custom_routing').value = replaceEmptyStringIfUndifined(custom.custom_routing);
+		var table_length = document.getElementById('oci_length').value;
+		var hash_length = parseInt(custom.oci_length);
+		if (hash_length > table_length) {
+			var oci = document.getElementById('oci');
+			for (var i = parseInt(table_length); i < hash_length; i++){
+				var newrow = oci.rows[i].cloneNode(true);
+				var newlen = i+1;
+
+				var country = newrow.cells[0].getElementsByTagName('select')[0];
+				country.id = "oci_country_" + newlen;
+				country.name = "oci_country_" + newlen;
+				country.setAttribute("onchange", "updateOCIInfoOptions(" + newlen + ")");
+
+				var infoidentifier = newrow.cells[1].getElementsByTagName('select')[0];
+				infoidentifier.id = "oci_infoidentifier_" + newlen;
+				infoidentifier.name = "oci_infoidentifier_" + newlen;
+				infoidentifier.setAttribute("onchange", "updateOCICustomsOptions(" + newlen + ")");
+
+				var customsinfoidentifier = newrow.cells[2].getElementsByTagName('select')[0];
+				customsinfoidentifier.id = "oci_customsinfoidentifier_" + newlen;
+				customsinfoidentifier.name = "oci_customsinfoidentifier_" + newlen;
+				customsinfoidentifier.setAttribute("onchange", "checkChinaTraderLine(" + newlen + ")");
+
+				var supplementaryinfo = newrow.cells[3].getElementsByTagName('input')[0];
+				supplementaryinfo.id = "oci_supplementaryinfo_" + newlen;
+				supplementaryinfo.name = "oci_supplementaryinfo_" + newlen;
+				supplementaryinfo.value = '';
+
+				var buttontransmit = newrow.cells[3].getElementsByTagName('button')[0];
+				if (buttontransmit) {
+					buttontransmit.id = "button_oci_transmit_" + newlen;
+					buttontransmit.name = "button_oci_transmit_" + newlen;
+					buttontransmit.setAttribute("onclick", "openChinaInfo(" + newlen + ")");
+					buttontransmit.style.display = "none";
+					supplementaryinfo.className = "form-control";
+				}
+
+				oci.appendChild(newrow);
+
+				var oldrow = oci.rows;
+				oldrow[i].deleteCell(4);
+			}
+		}
+
+		for(var i=1; i<=hash_length; i++) {
+			document.getElementById('oci_country_'+i).value = replaceEmptyStringIfUndifined(custom['oci_'+i].country);
+			updateOCIInfoOptions(i);
+			document.getElementById('oci_infoidentifier_'+i).value = replaceEmptyStringIfUndifined(custom['oci_'+i].info_identifier);
+			updateOCICustomsOptions(i);
+			document.getElementById('oci_customsinfoidentifier_'+i).value = replaceEmptyStringIfUndifined(custom['oci_'+i].customs_info_identifier);
+			document.getElementById('oci_supplementaryinfo_'+i).value = replaceEmptyStringIfUndifined(custom['oci_'+i].supplementary_info);
+			if (replaceEmptyStringIfUndifined(custom['oci_'+i].supplementary_info) != "") {
+				jQuery('#oci_supplementaryinfo_' + i).removeClass("mandatory");
+				jQuery('#oci_supplementaryinfo_' + i).prop('disabled', false);
+			}
+			if (document.getElementById('oci_customsinfoidentifier_'+i).value != ""){
+				jQuery('#oci_supplementaryinfo_' + i).prop('req', "M");
+			}
+
+			checkChinaTraderLine(i);
+		}
+
+		document.getElementById('oci_length').value = hash_length;
+	}
+	
+
+	if (flight!=null){
+		if (replaceEmptyStringIfUndifined(flight.destination) != "") {
+			checkRequireContact(flight.destination);
+		}
+	}
+
+	//security
+	if(document.getElementById("tbody_security")){
+		var security = obj.security;
+		if (security != null) {
+			for(var i=1; i<=Object.keys(security).length; i++) {
+				document.getElementById('sec_country_'+i).value = replaceEmptyStringIfUndifined(security['sec_'+i].country);
+				document.getElementById('sec_id_'+i).value = replaceEmptyStringIfUndifined(security['sec_'+i].id);
+				document.getElementById('sec_info_'+i).value = replaceEmptyStringIfUndifined(security['sec_'+i].information);
+				document.getElementById('sec_sup_'+i).value = replaceEmptyStringIfUndifined(security['sec_'+i].suplement);
+			}
+		}
+	}
+
+	// completion
+	var completion = obj.completion;
+	if (completion != null) {
+		document.getElementById('completion_name').value = replaceEmptyStringIfUndifined(completion.name);
+		document.getElementById('completion_place').value = replaceEmptyStringIfUndifined(completion.place);
+		document.getElementById('completion_date').value = replaceEmptyStringIfUndifined(completion.date);
+		for(var i=1; i<=9; i++) {
+			document.getElementById('shc_'+i).value = replaceEmptyStringIfUndifined(completion.special_handling['code_'+i]);
+		}
+		document.getElementById('other_service_info_1').value = replaceEmptyStringIfUndifined(completion.other_service_info_1);
+		document.getElementById('other_service_info_2').value = replaceEmptyStringIfUndifined(completion.other_service_info_2);
+		document.getElementById('other_service_info_3').value = replaceEmptyStringIfUndifined(completion.other_service_info_3);
+	}
+}
+
+function resetForm(oForm, skipElements) {
+	var frm_elements = oForm.elements;
+
+	for (i = 0; i < frm_elements.length; i++) {
+		if(frm_elements[i].type && frm_elements[i].id) {
+		    field_type = frm_elements[i].type.toLowerCase();
+		    field_id = frm_elements[i].id;
+
+		    if(skipElements.indexOf(field_id) != -1) {
+		    	continue;
+		    }
+
+		    switch (field_type) {
+			    case "text":
+			    case "password":
+			    case "textarea":
+			    case "hidden":
+			    	frm_elements[i].value = "";
+			        break;		       
+			    case "radio":
+			    case "checkbox":
+			        if (frm_elements[i].checked)
+			        {
+			            frm_elements[i].checked = false;
+			        }
+			        break;
+			    case "select-one":
+			    case "select-multi":
+			        frm_elements[i].selectedIndex = -1;
+			        break;
+			    default:
+			        break;
+		    }
+		}
+	}
+}
+
+function computeChargeableWeight(gross_weight, volume, weight_code) {
+	// both no weight and volume, no computation will happen
+	if(isEmpty(gross_weight) && isEmpty(volume)) {
+		return "";
+	}
+
+	// should be a decimal, not text
+	if((gross_weight != "" && !isNumeric(gross_weight)) || (volume != "" && !isNumeric(volume))) {
+		return "";
+	}
+
+	// compute for chargeable weight
+	var chargeable_weight = 0;
+
+	if(isEmpty(gross_weight)) {
+		gross_weight = 0;
+	}
+	if(weight_code == "KG") { // Cubic Meter Computation
+		chargeable_weight = volume * (500/3);
+	} else if(weight_code == "LB") { // Cubic Feet Computation
+		chargeable_weight = (volume *  (Math.pow(12, 3))) / 166;
+	}
+
+	if(gross_weight > chargeable_weight) chargeable_weight = gross_weight;
+
+	if (weight_code == "KG") {
+		return roundUpWeightIATA(chargeable_weight);
+	} else {
+		return roundUp(chargeable_weight,1);		
+	}
+}
+
+function setRequireIATA(participant_type, req_iata) {
+	if(document.getElementById("iata_require")) {
+		var iata_style = document.getElementById("iata_require").style;
+		iata_style.display = "none";		
+
+		if((participant_type != "Shipper") && (req_iata == "yes")) {
+			iata_style.display = "inline";
+		}
+	}
+}
+
+function isMandatory(field) {
+	if(mandatory_fields.indexOf(field) != -1) {  
+		return true;
+	}
+	return false;
+}
+
+// fields configured by airline admin if mandatory or not
+function getMandatoryValue(field) {
+	if(mandatory_fields.indexOf(field) != -1) {  
+		return "M";
+	}
+	return "O";
+}
+
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
+function splitIntoLines(input, len) {
+    var i;
+    var output = [];
+    var lineSoFar = "";
+    var temp;
+    var words = input.split(' ');
+    for (i = 0; i < words.length;) {
+        // check if adding this word would exceed the len
+        temp = addWordOntoLine(lineSoFar, words[i]);
+        if (temp.length > len) {
+            if (lineSoFar.length == 0) {
+                lineSoFar = temp;     // force to put at least one word in each line
+                i++;                  // skip past this word now
+            }
+            output.push(lineSoFar);   // put line into output
+            lineSoFar = "";           // init back to empty
+        } else {
+            lineSoFar = temp;         // take the new word
+            i++;                      // skip past this word now
+        }
+    }
+    if (lineSoFar.length > 0) {
+        output.push(lineSoFar);
+    }
+    return(output);
+}
+
+function addWordOntoLine(line, word) {
+    if (line.length != 0) {
+        line += " ";
+    }
+    return(line += word);
+}
+
+function hasClass(el, className) {
+  if(!el) return false;
+  if (el.classList)
+    return el.classList.contains(className)
+  else
+    return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
+}
+
+function addClass(el, className) {
+  if(!el) return false;
+  if (el.classList)
+    el.classList.add(className)
+  else if (!hasClass(el, className)) el.className += " " + className
+}
+
+function removeClass(el, className) {
+  if(!el) return false;
+  if (el.classList)
+    el.classList.remove(className)
+  else if (hasClass(el, className)) {
+    var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
+    el.className=el.className.replace(reg, ' ')
+  }
+}
+   
+				</script>
+				<script type="text/javascript" src="js/uuid.js"></script>
+
+				<div id="loader" class="loading" style="display:none">
+					<i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw"></i></br>
+					<h4>Please Wait</h4>
+					<h5 id="loader_message">Searching for Tracking Information</h5>
+				</div>
+
+				<div class="col-md-12 " style="padding-top: 30px; ">
+					<h3 class="page-header-title">Enter Tracking Information</h3>
+				</div>
+				<div class="col-md-12 center" style="padding-top: 5px; padding-bottom: 5px">
+					<strong><span class="required " id="message">&nbsp;</span></strong>
+				</div>
+				<!-- <div class="col-md-12 required" style="margin-bottom: 5px; margin-top: 5px"></div> -->
+				<form name="form_tracking" id="form_tracking" method="post">
+					<input name="Shipment_text" style="display:none">
+					<input name="max_track" id="max_track" value="10" style="display:none">
+					<input type="hidden" name="portal_id" value="CHA" />
+					<input type="hidden" id="is_cwndc" name="is_cwndc" value="" />
+					<input type="hidden" id="ndc_routing_id" name="ndc_routing_id" value="CH"/>
+					<input type="hidden" id="is_portlet" name="is_portlet" value=""/>
+					<input type="hidden" id="result_count" name="result_count" value=""/>
+					<input type="hidden" id="tracking_uuid" name="tracking_uuid" value=""/>
+					<input type="hidden" id="is_portlet_val" name="is_portlet_val" value="0"/>
+
+					<div class="col-md-12 ">
+
+						<div class="query-form ">
+
+
+							<div class="row mcp-bg-gray padding-top-10">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="medium-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_1" id="carrier_dropdown_1" class="mcp-select mcp-input mcp-bg-gray mandatory-marker  " onfocus="clearError()" onchange="triggerCarrierAction(1)" >
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required " id="carrier_req_1">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="medium-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_1" readonly id="prefix_1" value="" maxlength="3" size="5" tabindex="1" class="mcp-input mcp-disabled mandatory-marker"  onchange="checkField(this)">
+									<span class="required " id="prefix_req_1" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="medium-device-label">Air Waybill</label>
+									<input type="text" name="awb_1" onfocus="clearError()" id="awb_1" value="" maxlength="8" size="15" tabindex="1" class="mcp-input mandatory-marker" required onChange="checkNextRow(1)" >
+									<span class="required " id="awb_req_1">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_2" id="carrier_dropdown_2" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(2)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_2">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_2" readonly id="prefix_2" value="" maxlength="3" size="5" tabindex="2" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_2" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_2" onfocus="clearError()" id="awb_2" value="" maxlength="8" size="15" tabindex="2" class="mcp-input mandatory-marker"  onChange="checkNextRow(2)" disabled>
+									<span class="required hidden" id="awb_req_2">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_3" id="carrier_dropdown_3" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(3)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_3">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_3" readonly id="prefix_3" value="" maxlength="3" size="5" tabindex="3" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_3" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_3" onfocus="clearError()" id="awb_3" value="" maxlength="8" size="15" tabindex="3" class="mcp-input mandatory-marker"  onChange="checkNextRow(3)" disabled>
+									<span class="required hidden" id="awb_req_3">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_4" id="carrier_dropdown_4" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(4)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_4">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_4" readonly id="prefix_4" value="" maxlength="3" size="5" tabindex="4" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_4" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_4" onfocus="clearError()" id="awb_4" value="" maxlength="8" size="15" tabindex="4" class="mcp-input mandatory-marker"  onChange="checkNextRow(4)" disabled>
+									<span class="required hidden" id="awb_req_4">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_5" id="carrier_dropdown_5" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(5)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_5">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_5" readonly id="prefix_5" value="" maxlength="3" size="5" tabindex="5" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_5" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_5" onfocus="clearError()" id="awb_5" value="" maxlength="8" size="15" tabindex="5" class="mcp-input mandatory-marker"  onChange="checkNextRow(5)" disabled>
+									<span class="required hidden" id="awb_req_5">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_6" id="carrier_dropdown_6" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(6)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_6">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_6" readonly id="prefix_6" value="" maxlength="3" size="5" tabindex="6" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_6" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_6" onfocus="clearError()" id="awb_6" value="" maxlength="8" size="15" tabindex="6" class="mcp-input mandatory-marker"  onChange="checkNextRow(6)" disabled>
+									<span class="required hidden" id="awb_req_6">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_7" id="carrier_dropdown_7" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(7)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_7">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_7" readonly id="prefix_7" value="" maxlength="3" size="5" tabindex="7" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_7" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_7" onfocus="clearError()" id="awb_7" value="" maxlength="8" size="15" tabindex="7" class="mcp-input mandatory-marker"  onChange="checkNextRow(7)" disabled>
+									<span class="required hidden" id="awb_req_7">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_8" id="carrier_dropdown_8" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(8)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_8">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_8" readonly id="prefix_8" value="" maxlength="3" size="5" tabindex="8" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_8" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_8" onfocus="clearError()" id="awb_8" value="" maxlength="8" size="15" tabindex="8" class="mcp-input mandatory-marker"  onChange="checkNextRow(8)" disabled>
+									<span class="required hidden" id="awb_req_8">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_9" id="carrier_dropdown_9" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(9)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_9">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_9" readonly id="prefix_9" value="" maxlength="3" size="5" tabindex="9" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_9" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_9" onfocus="clearError()" id="awb_9" value="" maxlength="8" size="15" tabindex="9" class="mcp-input mandatory-marker"  onChange="checkNextRow(9)" disabled>
+									<span class="required hidden" id="awb_req_9">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+
+							<div class="row mcp-bg-gray ">
+								<div class="col-md-4 small-device-padding-top mcp-bg-gray ">
+									<label for="carrier" class="small-device-label">Carrier</label>
+
+									<select name = "carrier_dropdown_10" id="carrier_dropdown_10" class="mcp-select mcp-input mcp-bg-gray mandatory-marker disabled mcp-disabled" onfocus="clearError()" onchange="triggerCarrierAction(10)" disabled>
+							<option value = "">Select Carrier</option>
+							
+									<option  id = "0J" value="0J-254">0J - PREMIUM JET AG
+									</option>
+							
+									<option  id = "4E" value="4E-242">4E - Stabo Air
+									</option>
+							
+									<option  id = "A3" value="A3-390">A3 - Aegean Airlines
+									</option>
+							
+									<option  id = "AA" value="AA-001">AA - American Airlines
+									</option>
+							
+									<option  id = "AC" value="AC-014">AC - Air Canada
+									</option>
+							
+									<option  id = "AF" value="AF-057">AF - Air France
+									</option>
+							
+									<option  id = "AH" value="AH-124">AH - Air Algerie
+									</option>
+							
+									<option  id = "AR" value="AR-044">AR - Aerolineas Argentinas
+									</option>
+							
+									<option  id = "AS" value="AS-027">AS - Alaska Airlines
+									</option>
+							
+									<option  id = "AT" value="AT-147">AT - Royal Air Maroc
+									</option>
+							
+									<option  id = "AY" value="AY-105">AY - Finnair Cargo
+									</option>
+							
+									<option  id = "AZ" value="AZ-055">AZ - Alitalia
+									</option>
+							
+									<option  id = "BG" value="BG-997">BG - Biman Bangladesh
+									</option>
+							
+									<option  id = "BP" value="BP-636">BP - Air Botswana Airlines
+									</option>
+							
+									<option  id = "BT" value="BT-657">BT - Air Baltic
+									</option>
+							
+									<option  id = "BW" value="BW-106">BW - Caribbean Airlines
+									</option>
+							
+									<option  id = "CV" value="CV-172">CV - Cargolux
+									</option>
+							
+									<option  id = "CX" value="CX-160">CX - Cathay Pacific
+									</option>
+							
+									<option  id = "DL" value="DL-006">DL - Delta Air Lines
+									</option>
+							
+									<option  id = "DT" value="DT-118">DT - TAAG Angola Airlines
+									</option>
+							
+									<option  id = "ET" value="ET-071">ET - Ethiopian Airlines
+									</option>
+							
+									<option  id = "FI" value="FI-108">FI - Icelandair Cargo
+									</option>
+							
+									<option  id = "GF" value="GF-072">GF - Gulf Air
+									</option>
+							
+									<option  id = "HY" value="HY-250">HY - Uzbekistan Airways
+									</option>
+							
+									<option  id = "IR" value="IR-096">IR - Iran Air
+									</option>
+							
+									<option  id = "IY" value="IY-635">IY - Yemenia Cargo
+									</option>
+							
+									<option  id = "JP" value="JP-165">JP - Adria Airways
+									</option>
+							
+									<option  id = "JU" value="JU-115">JU - Air Serbia
+									</option>
+							
+									<option  id = "KC" value="KC-465">KC - Air Astana
+									</option>
+							
+									<option  id = "KL" value="KL-074">KL - KLM
+									</option>
+							
+									<option  id = "KM" value="KM-643">KM - Air Malta
+									</option>
+							
+									<option  id = "KU" value="KU-229">KU - Kuwait Airways
+									</option>
+							
+									<option  id = "LH" value="LH-020">LH - Lufthansa Cargo
+									</option>
+							
+									<option  id = "LO" value="LO-080">LO - LOT Polish Airlines
+									</option>
+							
+									<option  id = "MK" value="MK-239">MK - Air Mauritius
+									</option>
+							
+									<option  id = "MS" value="MS-077">MS - Egyptair
+									</option>
+							
+									<option  id = "OK" value="OK-064">OK - Czech Airlines
+									</option>
+							
+									<option  id = "OU" value="OU-831">OU - Croatia Airlines
+									</option>
+							
+									<option  id = "PK" value="PK-214">PK - Pakistan International Airlines
+									</option>
+							
+									<option  id = "PS" value="PS-566">PS - Ukraine International Airlines
+									</option>
+							
+									<option  id = "QF" value="QF-081">QF - Qantas Airways
+									</option>
+							
+									<option  id = "QR" value="QR-157">QR - Qatar Airways Cargo
+									</option>
+							
+									<option  id = "RO" value="RO-281">RO - Tarom
+									</option>
+							
+									<option  id = "SN" value="SN-082">SN - Brussels Airlines
+									</option>
+							
+									<option  id = "SP" value="SP-737">SP - SATA Air Acores
+									</option>
+							
+									<option  id = "SV" value="SV-065">SV - Saudi Airlines Cargo
+									</option>
+							
+									<option  id = "TP" value="TP-047">TP - TAP Portugal
+									</option>
+							
+									<option  id = "VN" value="VN-738">VN - Vietnam Airways
+									</option>
+							
+									<option  id = "VS" value="VS-932">VS - Virgin Atlantic Airways
+									</option>
+							
+									<option  id = "VZ" value="VZ-510">VZ - Air Class Lineas Aereas
+									</option>
+							
+									<option  id = "ZP" value="ZP-463">ZP - Silk Way Airlines
+									</option>
+								
+						</select>
+
+									<span class="required hidden" id="carrier_req_10">&nbsp;*</span>
+								</div>
+								<div class="col-md-1 small-device-padding-top mcp-bg-gray"
+									style="padding-left: 5px;padding-right: 5px;">
+									<label for="carrier" class="small-device-label">Prefix</label>
+
+
+									<input type="text" name="prefix_10" readonly id="prefix_10" value="" maxlength="3" size="5" tabindex="10" class="mcp-input mcp-disabled mandatory-marker" disabled onchange="checkField(this)">
+									<span class="required hidden" id="prefix_req_10" >*</span>
+
+
+								</div>
+								<div class="col-md-2 small-device-padding-top mcp-bg-gray">
+									<label for="carrier" class="small-device-label">Air Waybill</label>
+									<input type="text" name="awb_10" onfocus="clearError()" id="awb_10" value="" maxlength="8" size="15" tabindex="10" class="mcp-input mandatory-marker"  onChange="checkNextRow(10)" disabled>
+									<span class="required hidden" id="awb_req_10">&nbsp;*</span>
+								</div>
+							</div>
+							<div class="search-divider"></div>
+
+
+							<div class="row mcp-bg-gray">
+								<div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 10px">
+
+									<button id="track-submit" type="button" class="btn btn-primary btn-block btn-form" name="submit" id="submit" tabindex="11">Submit</button>
+								</div>
+								<div class="col-md-2 col-sm-2 col-xs-2" style="margin-top: 10px">
+
+									<button type="button" class="btn btn-primary btn-block btn-form" name="clear" id="clear" tabindex="12" onClick="javascript:goToPage('tracking.asp')">Clear</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div id="captcha_container" class="g-recaptcha"
+						data-sitekey="6LcXzP8UAAAAAOAvz8Jp6klhEqUzkiqdmrwoX3Tc" data-callback="captchaCallback"
+						style="position: relative;top: 15px;left: 10px;display: none;"></div>
+
+					<input type="hidden" id="from_request" name="from_request" value="" />
+	</form>
+					<div id="tracking_sort" class="pull-right">
+						<label for="tracking_sort_option" class="mcp-label">Sort By</label>
+						<select id="tracking_sort_option" onchange="displayResult()">
+			<option value="earliestfirst" selected>Earliest first</option>
+			<option value="earliestlast">Earliest last</option>
+		</select>
+					</div>
+					<div id="tracking_details" class="">
+						<div class="col-md-12 tracking_table_message">
+							<div class="row mcp-label tracking_message">
+								<div class="col-md-12">
+									<span class="messageDis ">No AWB found</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 tracking_result">
+							<div class="row ">
+								<div class="tracking_awb sub-title-color col-md-12"></div>
+							</div>
+							<div class="row">
+								<div class="col-md">
+									<span class="tracking_origin form_control_label"></span>
+								</div>
+								<div class="col-md">
+									<span class="tracking_destination form_control_label"></span>
+								</div>
+								<div class="col-md">
+									<span class="tracking_pieces form_control_label"></span>
+								</div>
+								<div class="col-md">
+									<span class="tracking_weight form_control_label"></span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3">
+									<span class="tracking_status form_control_label"></span>
+								</div>
+								<div class="col-md-3">
+									<span class="tracking_flight form_control_label"></span>
+								</div>
+								<div class="col-md-3">
+									<span class="tracking_date form_control_label"></span>
+								</div>
+							</div>
+							<div class="tracking_events">
+								<div class="row event-details-header event-header-color">
+									<div class="col-md-1 mcp-label bold"> # </div>
+									<div class="col-md-2 mcp-label left"> Status </div>
+									<div class="col-md-7 mcp-label"> Details </div>
+									<div class="col-md-2 mcp-label center"> Update Received </div>
+								</div>
+								<!-- event_template will be added here -->
+							</div>
+						</div>
+					</div>
+
+
+					<script id="awb_error_template" type="text/x-custom-template">
+						<div class="col-md-12 tracking_table_message">
+			<div class="row mcp-label tracking_message">
+				<div class="col-md-12">
+					<span class="messageDis ">No AWB found</span>
+				</div>
+			</div>
+		</div>
+	</script>
+					<script id="awb_result_template" type="text/x-custom-template">
+						<div class="col-md-12 tracking_result">
+			<div  class="row ">
+				<div class="tracking_awb sub-title-color col-md-12"></div>
+			</div>
+			<div class="row">
+				<div class="col-md">
+					<span class="tracking_origin form_control_label"></span>
+				</div>
+				<div class="col-md">
+					<span class="tracking_destination form_control_label"></span>
+				</div>
+				<div class="col-md">
+					<span class="tracking_pieces form_control_label"></span>
+				</div>
+				<div class="col-md">
+					<span class="tracking_weight form_control_label"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<span class="tracking_status form_control_label"></span>
+				</div>
+				<div class="col-md-3">
+					<span class="tracking_flight form_control_label"></span>
+				</div>
+				<div class="col-md-3">
+					<span class="tracking_date form_control_label"></span>
+				</div>
+			</div>
+			<div class="tracking_events">
+				<div class="row event-details-header event-header-color">
+					<div class="col-md-1 mcp-label bold"> # </div>
+					<div class="col-md-2 mcp-label left"> Status </div>
+					<div class="col-md-7 mcp-label"> Details </div>
+					<div class="col-md-2 mcp-label center"> Update Received </div>
+				</div>
+				<!-- event_template will be added here -->		
+			</div>			
+		</div>
+	</script>
+
+					<script id="event_template" type="text/x-custom-template">
+						<div class="row event">
+			<div class="col-md mcp-label bold"> 
+				<label>#</label> 
+				<span class="event_num"></span>
+			</div>
+			<div class="col-md-2 mcp-label"> 
+				<label>Status: </label> 
+				<span class="event_status"></span>
+			</div>
+			<div class="col-md-7 mcp-label"> 
+				<label>Details: </label> 
+				<span class="event_detail"></span>
+			</div>
+			<div class="col-md-2 mcp-label update-received"> 
+				<label>Update Received: </label>
+				<span class="event_date"></span>
+			</div>
+		</div>
+	</script>
+					<script language="JavaScript">
+						<!--
+						jQuery('#cargo_update_modal').modal("show");
+	initForm(document.form_tracking);
+	
+	if (jQuery("#prefix_1")) {
+		jQuery("#prefix_1").prop('readonly', false);
+		jQuery("#prefix_1").prop('disabled', false);	
+		jQuery("#prefix_1").removeClass("mcp-disabled");
+		jQuery("#prefix_1").prop("is_valid", 1);
+	}
+
+
+	setFieldFromIndex();
+
+//
+						-->
+						jQuery.noConflict();
+						jQuery(document).ready(function(){
+						initializeTermsAndPasswordCheck();
+						});
+
+					</script>
+
+			</div>
+		</article>
+
+		<div id="cookies">
+			This website uses cookies to personalize and improve your website experience. By using this website, you
+			agree to the use of cookies as described in our
+			<a id="cookie_policy" href="manuals/CHA_pdf/Privacy_Notice.pdf" target="_blank">policy</a>
+			<div>
+				<button type="button" onClick = "allowCookies();" id="cookie_ok">OK</button>
+			</div>
+		</div>
+
+
+		<div style="padding-top:80px">&nbsp;</div>
+
+		<footer class="">
+
+			<div class="inner" style="height:17px">
+				<ul>
+					<li>
+						<a class="pdfView" onclick="openPDF('terms_of_use','CHA')"> Terms of use</a>
+					</li>
+					<li>
+						<a target="_blank" class="pdfView" href="/blog/article.asp?aid=29"> Privacy</a>
+					</li>
+				</ul>
+			</div>
+
+		</footer>
+		<script type="text/javascript">
+			if (typeof initCommonMessages === "function") {
+            initCommonMessages({});
+        }
+		</script>
+
+		<input id="selected_language" type="hidden" value="">
+
+		<script language="JavaScript">
+			initCommonMessages({});
+
+    var SUCCESS_MESSAGE = "Additional carriers are requested. You will be notified once the request is completed.";
+    var INTERNAL_ERROR  = "The server encountered an internal error.";
+    var TIMEOUT_MESSAGE = "The request did not complete in the expected time period. Please try again.";
+    var PROCESSING_MSG  = "Processing Request. Please Wait...";
+    var callFlag = true;
+    
+    function clearCheckbox(total_airline)
+    {
+        for (var index=0; index < total_airline; index++)
+        {
+            if (document.getElementById("check_"+index).disabled == false)
+            {
+                document.getElementById("check_"+index).checked = false;
+            }
+        }
+        document.getElementById("sendRequestBtn").disabled = true;
+    }
+
+    function selectAirline(total_airline)
+    {
+        var hasSelected = true;
+        for (var index=0; index < total_airline; index++)
+        {
+            if ((document.getElementById("check_"+index).disabled == false)
+             && (document.getElementById("check_"+index).checked == true))
+            {
+                hasSelected = false;
+            }
+        }
+        
+        if (callFlag)
+        {
+            document.getElementById("sendRequestBtn").disabled = hasSelected;
+        }
+    }
+    
+    function sendRequest(total_airline)
+    {
+        var cnt = 0;
+        var newRequest = "";
+        var comma = "";
+        var participant_id = document.getElementById("participant_id").value;
+        
+        for (var index=0; index < total_airline; index++)
+        {
+            if ((document.getElementById("check_"+index).disabled == false)
+             && (document.getElementById("check_"+index).checked == true))
+            {
+                newRequest += comma + document.getElementById("check_"+index).value ;
+                comma = ","
+                
+                cnt += 1;
+                document.getElementById("sendRequestBtn").disabled = true;
+            }
+        }
+        
+        if ((cnt > 0) && (callFlag == true))
+        {
+            setMessageStatusAdd(getCommonMessage(PROCESSING_MSG));
+            document.getElementById("success_message").hidden = false;
+        
+            jQuery.ajax({
+            url: 'ajax_send_airline_request.asp',
+            type: "GET",
+            dataType: 'JSON',
+            data: { newRequest: newRequest, participant_id:participant_id },
+            beforeSend: function() {
+                callFlag = false;
+            },
+            success: function(data){
+                if (data["status"] == "success") {
+                    setMessageStatusAdd(getCommonMessage(SUCCESS_MESSAGE) + (data["status2"] ? data["status2"] : ""));
+                
+                    for (var index=0; index < total_airline; index++)
+                    {   
+                        if ((document.getElementById("check_"+index).disabled == false)
+                         && (document.getElementById("check_"+index).checked == true))
+                        {
+                            document.getElementById("check_"+index).checked = false;
+                            document.getElementById("check_"+index).disabled = true;
+                        }
+                    }
+                } else {
+                    if ((!isEmpty(data["status"])) && (data["status"].indexOf("TIME_OUT") > -1)) {
+                        setMessageStatusAdd(getCommonMessage(TIMEOUT_MESSAGE) + (data["status2"] ? data["status2"] : ""));
+                    } else {
+                        var messageDis = "";
+                        if (!isEmpty(data["status"])) {
+                            messageDis = data["status"];
+                        }
+                        setMessageStatusAdd(getCommonMessage(messageDis) + (data["status2"] ? data["status2"] : ""));
+                    }                    
+                    clearCheckbox(total_airline);
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                setMessageStatusAdd(getCommonMessage(INTERNAL_ERROR));
+                clearCheckbox(total_airline);
+                console.log("Routing request error. Status: " + textStatus);
+            },
+            complete: function() {
+                callFlag = true;
+            }
+            });
+        }
+    }
+
+    function isEmpty(str) {
+        return (!str || 0 === str.length);
+    }
+
+    function setMessageStatusAdd(message) {
+        document.getElementById("messageDis").innerHTML = message;
+    }
+    
+    // jQuery.noConflict();
+    jQuery(document).ready(function() {
+        jQuery("#add_carrier_modal").on("hide.bs.modal", function () {
+            setMessageStatusAdd("");
+            document.getElementById("success_message").hidden = true;
+            ndcSelectAirline(document.getElementById("defaultCarrier").value);
+            
+        });
+    });
+		</script>
+
+		<input id="selected_language" type="hidden" value="">
+		<input type="hidden" name="participant_id" id="participant_id" value="">
+		<input type="hidden" name="defaultCarrier" id="defaultCarrier" value="">
+		<div class="modal fade" id="add_carrier_modal" tabindex="-1" role="dialog"
+			aria-labelledby="add_carrier_modalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<!--                <h4 class="modal-title" id="modalTitle">Add Carrier</h4> -->
+					</div>
+					<div class="modal-body">
+						<table class="border" cellpadding="0" cellspacing="1"
+							style="border: 0px; background-color: #ffffff;" width="100%" align="center">
+							<div class="alert alert-success" role="alert" id="success_message" hidden>
+								<b><span id="messageDis">&nbsp;</span></b>
+							</div>
+
+							<tr bgcolor="#ffffff" height="15">
+								<td colspan="6" class="sub_title" align="center" style="font-size: 11px;">&nbsp;
+									<b>Select Additional Carriers to be Requested</b>
+								</td>
+							</tr>
+
+							<tr bgcolor="#ffffff" height="20" class="h5">
+
+								<td width="10%">&nbsp;
+
+									<input type="checkbox" name="check_0" id="check_0" value="AF" onChange="selectAirline(8)"  >
+                                &nbsp;AF
+                            </td>
+
+								<td width="10%">&nbsp;
+
+									<input type="checkbox" name="check_2" id="check_2" value="FI" onChange="selectAirline(8)"  >
+                                &nbsp;FI
+                            </td>
+
+								<td width="10%">&nbsp;
+
+									<input type="checkbox" name="check_4" id="check_4" value="HY" onChange="selectAirline(8)"  >
+                                &nbsp;HY
+                            </td>
+
+								<td width="10%">&nbsp;
+
+									<input type="checkbox" name="check_6" id="check_6" value="QR" onChange="selectAirline(8)"  >
+                                &nbsp;QR
+                            </td>
+
+								<td width="10%">&nbsp;
+									&nbsp;
+								</td>
+
+								<td width="10%">&nbsp;
+									&nbsp;
+								</td>
+
+							</tr>
+
+							<tr bgcolor="#ffffff" height="20" class="h5">
+
+								<td width="10%">&nbsp;
+
+									<input type="checkbox" name="check_1" id="check_1" value="AT" onChange="selectAirline(8)"  >
+                                &nbsp;AT
+                            </td>
+
+								<td width="10%">&nbsp;
+
+									<input type="checkbox" name="check_3" id="check_3" value="FJ" onChange="selectAirline(8)"  >
+                                &nbsp;FJ
+                            </td>
+
+								<td width="10%">&nbsp;
+
+									<input type="checkbox" name="check_5" id="check_5" value="KL" onChange="selectAirline(8)"  >
+                                &nbsp;KL
+                            </td>
+
+								<td width="10%">&nbsp;
+
+									<input type="checkbox" name="check_7" id="check_7" value="TP" onChange="selectAirline(8)"  >
+                                &nbsp;TP
+                            </td>
+
+								<td width="10%">&nbsp;
+									&nbsp;
+								</td>
+
+								<td width="10%">&nbsp;
+									&nbsp;
+								</td>
+
+							</tr>
+
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-success btn-form" onClick="clearCheckbox(8)">Clear</button>
+						<button class="btn btn-success btn-form" id="sendRequestBtn" onClick="sendRequest(8)" disabled>Send Request</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script language="JavaScript">
+			function checkTerms(e){
+        if(e.checked) {
+            document.getElementById("submit_terms").disabled = false;
+        } else {
+            document.getElementById("submit_terms").disabled = true;
+        }
+   }
+		</script>
+		<link rel="stylesheet" type="text/css" href="css/1679365373.freight_modal.css">
+		<div class="freight_modal modal fade" id="terms_of_use_modal" tabindex="-1" role="dialog"
+			data-controls-modal="terms_of_use_modal" data-backdrop="static" data-keyboard="false">
+			<div class="vertical-alignment-helper">
+				<div class="modal-dialog vertical-align-center" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="modalTitle">Terms of Use</h4>
+						</div>
+						<div class="modal-body">
+							<input type="checkbox" name="terms_accept" id="terms_accept" onClick="checkTerms(this)">&nbsp;
+                    I have read and agree to the <a href="#" id="terms_of_use" onclick="openPDF('terms_of_use','CHA')">Terms
+								of Use</a> of this website.
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-success btn-form" id="submit_terms" onClick="submitTermsOfUse()" disabled>Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<link rel="stylesheet" type="text/css" href="css/1679365373.freight_modal.css">
+		<input type="hidden" name="stronger_pw" id="stronger_pw" value="">
+		<div class="freight_modal modal fade" id="change_password_modal" tabindex="-1" role="dialog"
+			data-controls-modal="change_password_modal" data-backdrop="static" data-keyboard="false">
+			<div class="vertical-alignment-helper">
+				<div class="modal-dialog vertical-align-center" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="modalTitle">Change Password</h4>
+						</div>
+						<div class="modal-body">
+							<form name="form_change_initial_password" id="form_change_initial_password">
+								<div style="width: 400px; margin: 10px auto">
+									<div id="modal-description"
+										style="margin-bottom: 10px; height: 12px; font-size: 12px; text-align: center;">
+									</div>
+									<input type="hidden" name="change_password_method" id="change_password_method">
+									<div id="cp_message" class="required" style="margin-bottom: 10px; height: 12px;">
+									</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+									<script language="JavaScript">
+										var passwordPolicyList = Array();
+
+function addPasswordTooltip(forceInitialize) {
+    var passwordFlag = jQuery('#stronger_pw').val();
+
+    if (passwordFlag == 1) {
+        jQuery(document).ready(function() {
+
+            if (forceInitialize || jQuery.isEmptyObject(passwordPolicyList)) {
+                initializePasswordPolicy();    
+            }        
+
+            jQuery('#password, #new_password').on("focus keyup", function() {
+                setPasswordTooltip(jQuery(this));
+                var pswd = jQuery(this).val();
+
+                checkPasswordPolicy(pswd);    
+    
+            }).focus(function() {
+                jQuery('#pswd_info').show();
+            }).blur(function() {
+                jQuery('#pswd_info').hide();
+            });
+        });
+    }
+}
+
+function setPasswordTooltip(el) {
+    var pos = el.position();
+    var height = el.outerHeight();
+
+    jQuery('#pswd_info').css({
+        top: (pos.top + height + 12) + "px",
+        left: pos.left + "px"
+    });
+}
+
+function checkPasswordPolicy(pswd){
+    var retValue = true;
+    var errMessage = "";
+    var policyErr = "";
+    var password_min = parseInt(jQuery('#password_min').val());
+    var password_max = parseInt(jQuery('#password_max').val());
+
+    //validate the length
+    if ((pswd.length < password_min) || (pswd.length > password_max)) {
+        jQuery('#length').removeClass('valid').addClass('invalid');
+        errMessage = getCommonMessage("Password should have ") + password_min + getCommonMessage(" to ") + password_max + getCommonMessage(" characters.");
+        retValue = false;
+    } else {
+        jQuery('#length').removeClass('invalid').addClass('valid');
+    }
+
+    passwordPolicyList.forEach(function (item, index) {
+        if ( pswd.match(item.regex) ) {
+            jQuery('#policy_'+ item.id).removeClass('invalid').addClass('valid');
+    	} else {
+            jQuery('#policy_'+ item.id).removeClass('valid').addClass('invalid');
+        	retValue = false;
+            policyErr += (policyErr == "") ? "" : ", ";
+            policyErr += getCommonMessage(item.error);
+    	}
+    });
+
+    if (policyErr != "") {
+        errMessage += getCommonMessage(" Password should contain at least one ") + policyErr;
+    }
+
+    return {retValue, errMessage};
+}
+
+function submitForm(f) {
+    var stronger_pw = f.stronger_pw.value;
+    var password = f.password.value;
+    var status = false;
+
+    jQuery("#message").empty();
+
+    status = validateForm(f);
+
+    if (stronger_pw == 1) {
+        let checkPassword = checkPasswordPolicy(password);
+
+        if (checkPassword.retValue) {
+            removeClass(f.password, "mandatory");
+        } else {
+            addClass(f.password, "mandatory");
+            if (status) {
+                jQuery("#message").append(checkPassword.errMessage);
+            }
+            status = false;
+        }   
+    }
+
+    return status;
+}
+
+function initializePasswordPolicy() {
+    jQuery.ajax({
+        url: 'ajax_get_password_policy.asp',
+        type: "GET",
+        dataType: 'JSON',
+        async: false,
+        success: function(data){
+            passwordPolicyList = data.entries;
+            setTooltipMenu();
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log("Error : " + textStatus + " : " + errorThrown);
+        }
+    });
+}
+
+function setTooltipMenu() {
+    passwordPolicyList.forEach(function (item, index) {
+        jQuery('#pswd_tooltip').append('<li id="policy_' + item.id + '" class="invalid">' + getCommonMessage(item.tooltip) + '</li>');
+    });
+
+}
+									</script>
+
+									<style>
+										#pswd_info {
+											display: none;
+											position: absolute;
+											width: 200px;
+											padding: 8px;
+											background: #fefefe;
+											font-size: 10px;
+											border-radius: 5px;
+											box-shadow: 0 1px 3px #ccc;
+											border: 1px solid #ddd;
+											z-index: 99999;
+										}
+
+										#pswd_info h4 {
+											margin: 0 0 10px 0;
+											padding: 0;
+										}
+
+										#pswd_info::before {
+											content: "\25B2";
+											position: absolute;
+											top: -12px;
+											left: 50%;
+											font-size: 14px;
+											line-height: 14px;
+											color: #bbb;
+											text-shadow: none;
+											display: block;
+										}
+
+										.invalid {
+											background: url(../images/icons/cancel.png) no-repeat 0 50%;
+											padding-left: 22px;
+											line-height: 22px;
+											color: #ec3f41;
+										}
+
+										.valid {
+											background: url(../images/icons/confirm.png) no-repeat 0 50%;
+											padding-left: 22px;
+											line-height: 22px;
+											color: #3a7d34;
+										}
+
+										#pswd_info ul {
+											list-style-type: none;
+											padding-left: 0px;
+											margin-bottom: 0px;
+										}
+									</style>
+
+									<input type="hidden" name="password_min" id="password_min" value=>
+									<input type="hidden" name="password_max" id="password_max" value=>
+									<div id="pswd_info">
+										<h5>Password must meet the following requirements:</h5>
+										<ul id="pswd_tooltip">
+											<li id="length" class="invalid"><strong>  -  characters long</strong></li>
+										</ul>
+									</div>
+									<div class="prow">
+										<div class="modal-label">Old Password: </div>
+										<div class="modal-field">
+											<input type="password" class="modal-input" name="old_password" id="old_password" onchange="checkPasswordField(this);">
+                            </div>
+										</div>
+										<div class="prow">
+											<div class="modal-label">New Password: </div>
+											<div class="modal-field">
+												<input type="password" class="modal-input" name="new_password" id="new_password" onchange="checkPasswordField(this);">
+                            </div>
+											</div>
+											<div class="prow">
+												<div class="modal-label">Confirm Password: </div>
+												<div class="modal-field">
+													<input type="password" class="modal-input" name="confirm_password" id="confirm_password" onchange="checkPasswordField(this);">
+                            </div>
+												</div>
+
+											</div>
+							</form>
+							<div id="success_msg" class="good"
+								style="text-align: center; margin-top: 50px; color : #007F0E; display: none;">
+								New Password successfully saved!
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-success btn-form" id="submit_change" onClick="submitChangePassword()">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script language="JavaScript">
+			<!--
+			//addPasswordTooltip(false);
+//
+			-->
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,17 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* vh stands for viewport height */
+    background-image: url('src/app/images/milky-way-2695569_1280.jpg');
+    background-size: 100%
+  }
+  .form-input{
+  width: 600px;
+  height: 5oopx;
+  display:flex;
+  justify-content: center;
+  }
+  .example-full-width {
+    width: 100%;
+  }
