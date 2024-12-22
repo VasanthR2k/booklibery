@@ -28,23 +28,14 @@ export class BookpopupComponent {
     })
 
   }
-  get imagevalue() {
-    return this.books.get("imagevalue");
+  get imagevalue() { return this.books.get("imagevalue") }
 
-  }
+  get id() { return this.books.get('id') }
 
-  get id() {
-    return this.books.get('id');
-  }
-
-  get pdf() {
-    return this.books.get('pdf');
-  }
-
+  get pdf() { return this.books.get('pdf') }
 
   saveBook() {
     if (this.data.isNew) {
-      console.log(this.books.value)
       this.service.createBooks(this.books.value).subscribe(result => {
         if (result.message == "title already exit") {
           confirm("name already exit ")
@@ -60,11 +51,10 @@ export class BookpopupComponent {
         this.dialogRef.close(false);
       })
     }
-  }  
+  }
 
 
   imagedeleteresult(type: string) {
-    console.log(this.imagevalue?.value)
     var uploadpdf = this.imagevalue?.value
     var id = this.id?.value
     if (confirm("are you  delete ")) {
@@ -74,11 +64,9 @@ export class BookpopupComponent {
         }
         else {
           this.books.controls['pdf'].setValue('');
-
         }
       })
     }
-
   }
 
   uploadpdf(event: any) {
@@ -94,5 +82,4 @@ export class BookpopupComponent {
   CancelDialog() {
     this.dialogRef.close(false);
   }
-
 }
