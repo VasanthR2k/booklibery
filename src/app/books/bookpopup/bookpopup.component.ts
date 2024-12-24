@@ -28,11 +28,6 @@ export class BookpopupComponent {
     })
 
   }
-  get imagevalue() {return this.books.get("imagevalue")}
-
-  get id() { return this.books.get('id') }
-
-  get pdf() { return this.books.get('pdf') }
 
   saveBook() {
     if (this.data.isNew) {
@@ -52,7 +47,6 @@ export class BookpopupComponent {
       })
     }
   }
-
 
   imagedeleteresult(type: string) {
     var uploadpdf = this.imagevalue?.value
@@ -82,4 +76,10 @@ export class BookpopupComponent {
   CancelDialog() {
     this.dialogRef.close(false);
   }
+
+  get imagevalue() { return this.books.get("imagevalue") }
+
+  get id() { return this.books.get('id') }
+
+  get pdf() { return this.books.get('pdf') }
 }
