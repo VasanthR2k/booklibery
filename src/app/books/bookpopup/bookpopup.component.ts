@@ -28,10 +28,7 @@ export class BookpopupComponent {
     })
 
   }
-  get imagevalue() {
-    return this.books.get("imagevalue");
-
-  }
+  get imagevalue() {return this.books.get("imagevalue")}
 
   get id() {
     return this.books.get('id');
